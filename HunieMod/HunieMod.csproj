@@ -7,8 +7,8 @@
     <ProjectGuid>{827C84EB-7DD9-4C0D-B93E-1786EBD8ADF4}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>HunieMod.Plugins.Base</RootNamespace>
-    <AssemblyName>HunieMod.Plugins.Base</AssemblyName>
+    <RootNamespace>HunieMod</RootNamespace>
+    <AssemblyName>HunieMod</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -17,38 +17,38 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\bin\Debug\</OutputPath>
+    <OutputPath>..\bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>..\..\bin\Debug\HunieMod.Plugins.Base.xml</DocumentationFile>
+    <DocumentationFile>..\bin\Debug\HunieMod.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>none</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\..\bin\Release\</OutputPath>
+    <OutputPath>..\bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>..\..\bin\Release\HunieMod.Plugins.Base.xml</DocumentationFile>
+    <DocumentationFile>..\bin\Release\HunieMod.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Assembly-CSharp">
-      <HintPath>..\..\lib\Assembly-CSharp.dll</HintPath>
+      <HintPath>..\lib\Assembly-CSharp.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Assembly-CSharp-firstpass">
-      <HintPath>..\..\lib\Assembly-CSharp-firstpass.dll</HintPath>
+      <HintPath>..\lib\Assembly-CSharp-firstpass.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="HOTween">
-      <HintPath>..\..\lib\HOTween.dll</HintPath>
+      <HintPath>..\lib\HOTween.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="UnityEngine">
-      <HintPath>..\..\lib\UnityEngine.dll</HintPath>
+      <HintPath>..\lib\UnityEngine.dll</HintPath>
       <Private>False</Private>
     </Reference>
   </ItemGroup>
@@ -57,19 +57,19 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\submodules\BepInEx\BepInEx.Preloader\BepInEx.Preloader.csproj">
+    <ProjectReference Include="..\submodules\BepInEx\BepInEx.Preloader\BepInEx.Preloader.csproj">
       <Project>{f7abbe07-c02f-4f7c-bf6e-c6656bf588ca}</Project>
       <Name>BepInEx.Preloader</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\submodules\BepInEx\BepInEx\BepInEx.csproj">
+    <ProjectReference Include="..\submodules\BepInEx\BepInEx\BepInEx.csproj">
       <Project>{4ffba620-f5ed-47f9-b90c-dad1316fd9b9}</Project>
       <Name>BepInEx</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\submodules\BepInEx\submodules\BepInEx.Harmony\BepInEx.Harmony\BepInEx.Harmony.csproj">
+    <ProjectReference Include="..\submodules\BepInEx\submodules\BepInEx.Harmony\BepInEx.Harmony\BepInEx.Harmony.csproj">
       <Project>{54161cfe-ff42-4dde-b161-3a49545db5cd}</Project>
       <Name>BepInEx.Harmony</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\submodules\BepInEx\submodules\BepInEx.Harmony\submodules\Harmony\Harmony\Harmony.csproj">
+    <ProjectReference Include="..\submodules\BepInEx\submodules\BepInEx.Harmony\submodules\Harmony\Harmony\Harmony.csproj">
       <Project>{82bd554f-b647-4766-96d3-b47ae293da9f}</Project>
       <Name>Harmony</Name>
     </ProjectReference>

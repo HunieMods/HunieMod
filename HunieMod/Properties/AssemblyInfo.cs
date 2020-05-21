@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("HunieMod.Plugins.Base")]
-[assembly: AssemblyDescription("HunieMod plugin providing several abstractions and helpers as a base for other plugins")]
+[assembly: AssemblyTitle("HunieMod")]
+[assembly: AssemblyDescription("HunieMod base plugin providing several abstractions and helpers as a base for other plugins")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Lounger")]
-[assembly: AssemblyProduct("HunieMod.Plugins.Base")]
+[assembly: AssemblyProduct("HunieMod")]
 [assembly: AssemblyCopyright("Copyright © Lounger 2020")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
