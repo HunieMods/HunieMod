@@ -12,7 +12,7 @@ namespace HunieMod
         /// </summary>
         public string Author { get; protected set; }
 
-        public HunieModPlugin(string GUID, string Name, string Version, string Author) : base(GUID, Name, Version)
+        public HunieModPlugin(string GUID, string Name, string Version, string Author = null) : base(GUID, Name, Version)
         {
             this.Author = Author;
         }
