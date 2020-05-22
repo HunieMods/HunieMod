@@ -76,4 +76,25 @@
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="CreateReleaseStructure" AfterTargets="AfterBuild">
+    <ItemGroup>
+      <CoreFiles Include="$(TargetDir)0Harmony*" />
+      <CoreFiles Include="$(TargetDir)BepInEx*" />
+      <CoreFiles Include="$(TargetDir)Mono*" />
+      <PluginFiles Include="$(TargetDir)$(SolutionName)*$(TargetExt)" />
+      <PluginFiles Include="$(TargetDir)$(SolutionName)*.xml" />
+      <ConfigFile Include="$(SolutionDir)huniepopconfig\BepInEx.cfg" />
+      <DoorstopConfigFile Include="$(SolutionDir)submodules\BepInEx\doorstop\doorstop_config.ini" />
+      <DoorstopProxyFile Include="$(SolutionDir)doorstop\x86\winhttp.dll" />
+      <LicenseFile Include="$(SolutionDir)LICENSE.txt" />
+      <ReadmeFile Include="$(SolutionDir)README.md" />
+    </ItemGroup>
+    <Move SourceFiles="@(CoreFiles)" DestinationFolder="$(TargetDir)BepInEx\core" />
+    <Move SourceFiles="@(PluginFiles)" DestinationFolder="$(TargetDir)BepInEx\plugins" />
+    <Copy SourceFiles="@(ConfigFile)" DestinationFolder="$(TargetDir)BepInEx\config" />
+    <Copy SourceFiles="@(DoorstopConfigFile)" DestinationFolder="$(TargetDir)" />
+    <Copy SourceFiles="@(DoorstopProxyFile)" DestinationFolder="$(TargetDir)" />
+    <Copy SourceFiles="@(LicenseFile)" DestinationFiles="$(TargetDir)$(SolutionName)_License.txt" />
+    <Copy SourceFiles="@(ReadmeFile)" DestinationFiles="$(TargetDir)$(SolutionName)_Readme.txt" />
+  </Target>
 </Project>
