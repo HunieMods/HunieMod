@@ -84,7 +84,7 @@
       <PluginFiles Include="$(TargetDir)$(SolutionName)*.xml" />
       <ConfigFile Include="$(SolutionDir)huniepopconfig\BepInEx.cfg" />
       <DoorstopConfigFile Include="$(SolutionDir)submodules\BepInEx\doorstop\doorstop_config.ini" />
-      <DoorstopProxyFile Include="$(SolutionDir)doorstop\x86\winhttp.dll" />
+      <DoorstopProxyFile Include="$(SolutionDir)doorstop\x86\version.dll" />
       <LicenseFile Include="$(SolutionDir)LICENSE.txt" />
       <ReadmeFile Include="$(SolutionDir)README.md" />
     </ItemGroup>
