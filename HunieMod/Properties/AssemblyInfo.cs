@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("HunieMod")]
-[assembly: AssemblyDescription("HunieMod base plugin providing several abstractions and helpers as a base for other plugins")]
+[assembly: AssemblyDescription("HuniePop plugin providing several abstractions and helpers as a base for other plugins")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Lounger")]
 [assembly: AssemblyProduct("HunieMod")]
