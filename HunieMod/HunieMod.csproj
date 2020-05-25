@@ -55,6 +55,7 @@
   <ItemGroup>
     <Compile Include="BaseHunieModPlugin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utility\ReflectionUtil.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\submodules\BepInEx\BepInEx.Preloader\BepInEx.Preloader.csproj">
