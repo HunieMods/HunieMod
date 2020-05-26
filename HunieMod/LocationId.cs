@@ -26,7 +26,7 @@
         Beach = 4,
 
         /// <summary>
-        /// Bar & Lounge (Normal - Indoor)
+        /// Bar &amp; Lounge (Normal - Indoor)
         /// </summary>
         Bar = 5,
 
