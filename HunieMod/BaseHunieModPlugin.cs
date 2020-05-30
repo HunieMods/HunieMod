@@ -57,7 +57,7 @@ namespace HunieMod
         /// <summary>
         /// The definition of the location that is currently active
         /// </summary>
-        protected static LocationDefinition CurrentLocationDef => Player?.currentLocation;
+        protected static LocationDefinition CurrentLocationDef => Location?.currentLocation;
 
         /// <summary>
         /// The ID of the location that is currently active
@@ -83,7 +83,7 @@ namespace HunieMod
         /// <summary>
         /// The definition of the girl that is currently active
         /// </summary>
-        protected static GirlDefinition CurrentGirlDef => Player?.currentGirl;
+        protected static GirlDefinition CurrentGirlDef => Location?.currentGirl;
 
         /// <summary>
         /// The visual object of the main girl currently on the stage
