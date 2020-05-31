@@ -57,7 +57,6 @@
     <Compile Include="LocationId.cs" />
     <Compile Include="GirlId.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Utility\ReflectionUtil.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\submodules\BepInEx\BepInEx.Preloader\BepInEx.Preloader.csproj">
