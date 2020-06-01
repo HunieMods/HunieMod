@@ -36,11 +36,6 @@ namespace HunieMod
         public static GameManager Game => GameManager.System;
 
         /// <summary>
-        /// General data class containing nearly all of the game's assets definitions
-        /// </summary>
-        public static GameData Data => GameManager.Data;
-
-        /// <summary>
         /// The game's main camera
         /// </summary>
         public static Camera MainCam => GameManager.System.gameCamera.mainCamera;
@@ -65,80 +60,6 @@ namespace HunieMod
         /// manages the more visual aspects of the puzzle game
         /// </summary>
         public static PuzzleManager Puzzle => Game.Puzzle;
-
-        #endregion
-
-        #region Game Data
-
-        /// <summary>
-        /// Instances of all the Ability definitions in the game
-        /// </summary>
-        public static List<AbilityDefinition> AllAbilities => GetDefinitions<AbilityDefinition>(Data.Abilities);
-
-        /// <summary>
-        /// Instances of all the Action Menu Item definitions in the game
-        /// </summary>
-        public static List<ActionMenuItemDefinition> AllActionMenuItems => GetDefinitions<ActionMenuItemDefinition>(Data.ActionMenuItems);
-
-        /// <summary>
-        /// Instances of all the cellphone app definitions in the game
-        /// </summary>
-        public static List<CellAppDefinition> AllCellApps => GetDefinitions<CellAppDefinition>(Data.CellApps);
-
-        /// <summary>
-        /// Instances of all the Debug Profile definitions in the game
-        /// </summary>
-        public static List<DebugProfile> AllDebugProfiles => GetDefinitions<DebugProfile>(Data.DebugProfiles);
-
-        /// <summary>
-        /// Instances of all the Dialog Scene definitions in the game
-        /// </summary>
-        public static List<DialogSceneDefinition> AllDialogScenes => GetDefinitions<DialogSceneDefinition>(Data.DialogScenes);
-
-        /// <summary>
-        /// Instances of all the Dialog Trigger definitions in the game
-        /// </summary>
-        public static List<DialogTriggerDefinition> AllDialogTriggers => GetDefinitions<DialogTriggerDefinition>(Data.DialogTriggers);
-
-        /// <summary>
-        /// Instances of all the Energy Trail definitions in the game
-        /// </summary>
-        public static List<EnergyTrailDefinition> AllEnergyTrails => GetDefinitions<EnergyTrailDefinition>(Data.EnergyTrails);
-
-        /// <summary>
-        /// Instances of all the girl definitions in the game
-        /// </summary>
-        public static List<GirlDefinition> AllGirls => Data.Girls.GetAll();
-
-        /// <summary>
-        /// Instances of all the Item definitions in the game
-        /// </summary>
-        public static List<ItemDefinition> AllItems => GetDefinitions<ItemDefinition>(Data.Items);
-
-        /// <summary>
-        /// Instances of all the location definitions in the game
-        /// </summary>
-        public static List<LocationDefinition> AllLocations => GetDefinitions<LocationDefinition>(Data.Locations);
-
-        /// <summary>
-        /// Instances of all the Message definitions in the game
-        /// </summary>
-        public static List<MessageDefinition> AllMessages => GetDefinitions<MessageDefinition>(Data.Messages);
-
-        /// <summary>
-        /// Instances of all the 2D Particle Emitter definitions in the game
-        /// </summary>
-        public static List<ParticleEmitter2DDefinition> AllParticles => GetDefinitions<ParticleEmitter2DDefinition>(Data.Particles);
-
-        /// <summary>
-        /// Instances of all the Sprite Group definitions in the game
-        /// </summary>
-        public static List<SpriteGroupDefinition> AllSpriteGroups => GetDefinitions<SpriteGroupDefinition>(Data.SpriteGroups);
-
-        /// <summary>
-        /// Instances of all the Trait definitions in the game
-        /// </summary>
-        public static List<TraitDefinition> AllTraits => GetDefinitions<TraitDefinition>(Data.Traits);
 
         #endregion
 
@@ -193,14 +114,14 @@ namespace HunieMod
         /// </summary>
         /// <param name="girlId">The ID of the girl to find</param>
         /// <returns>The definition of the girl, or default if not found</returns>
-        public static GirlDefinition GetGirl(GirlId girlId) => AllGirls.FirstOrDefault(girl => (GirlId)girl.id == girlId);
+        public static GirlDefinition GetGirl(GirlId girlId) => Definitions.Girls.FirstOrDefault(girl => (GirlId)girl.id == girlId);
 
         /// <summary>
         /// Tries to find an instance of a girl's definition with the specified name, case-insensitive
         /// </summary>
         /// <param name="firstName">The first name of the girl to find</param>
         /// <returns>The definition of the girl, or default if not found</returns>
-        public static GirlDefinition GetGirl(string firstName) => AllGirls.FirstOrDefault(girl => string.Equals(girl.firstName, firstName, StringComparison.OrdinalIgnoreCase));
+        public static GirlDefinition GetGirl(string firstName) => Definitions.Girls.FirstOrDefault(girl => string.Equals(girl.firstName, firstName, StringComparison.OrdinalIgnoreCase));
 
         #endregion
 
@@ -263,17 +184,6 @@ namespace HunieMod
                 add { GameStage.StageStartedEvent += value; }
                 remove { GameStage.StageStartedEvent -= value; }
             }
-        }
-
-        #endregion
-
-        #region Internal Methods
-
-        private static List<T> GetDefinitions<T>(object instance) where T : Definition
-        {
-            if (instance == null) throw new ArgumentNullException(nameof(instance));
-            var field = AccessTools.Field(instance.GetType(), "_definitions") ?? throw new InvalidOperationException($"Field _definitions was not found on type {instance.GetType()}");
-            return (field.GetValue(instance) as Dictionary<int, T>).Values.ToList();
         }
 
         #endregion
