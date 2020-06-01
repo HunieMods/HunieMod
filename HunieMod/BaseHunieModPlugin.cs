@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using BepInEx;
+using HarmonyLib;
 using UnityEngine;
 
 namespace HunieMod
@@ -67,6 +68,80 @@ namespace HunieMod
 
         #endregion
 
+        #region Game Data
+
+        /// <summary>
+        /// Instances of all the Ability definitions in the game
+        /// </summary>
+        protected static List<AbilityDefinition> AllAbilities => GetDefinitions<AbilityDefinition>(Data.Abilities);
+
+        /// <summary>
+        /// Instances of all the Action Menu Item definitions in the game
+        /// </summary>
+        protected static List<ActionMenuItemDefinition> AllActionMenuItems => GetDefinitions<ActionMenuItemDefinition>(Data.ActionMenuItems);
+
+        /// <summary>
+        /// Instances of all the cellphone app definitions in the game
+        /// </summary>
+        protected static List<CellAppDefinition> AllCellApps => GetDefinitions<CellAppDefinition>(Data.CellApps);
+
+        /// <summary>
+        /// Instances of all the Debug Profile definitions in the game
+        /// </summary>
+        protected static List<DebugProfile> AllDebugProfiles => GetDefinitions<DebugProfile>(Data.DebugProfiles);
+
+        /// <summary>
+        /// Instances of all the Dialog Scene definitions in the game
+        /// </summary>
+        protected static List<DialogSceneDefinition> AllDialogScenes => GetDefinitions<DialogSceneDefinition>(Data.DialogScenes);
+
+        /// <summary>
+        /// Instances of all the Dialog Trigger definitions in the game
+        /// </summary>
+        protected static List<DialogTriggerDefinition> AllDialogTriggers => GetDefinitions<DialogTriggerDefinition>(Data.DialogTriggers);
+
+        /// <summary>
+        /// Instances of all the Energy Trail definitions in the game
+        /// </summary>
+        protected static List<EnergyTrailDefinition> AllEnergyTrails => GetDefinitions<EnergyTrailDefinition>(Data.EnergyTrails);
+
+        /// <summary>
+        /// Instances of all the girl definitions in the game
+        /// </summary>
+        protected static List<GirlDefinition> AllGirls => Data.Girls.GetAll();
+
+        /// <summary>
+        /// Instances of all the Item definitions in the game
+        /// </summary>
+        protected static List<ItemDefinition> AllItems => GetDefinitions<ItemDefinition>(Data.Items);
+
+        /// <summary>
+        /// Instances of all the location definitions in the game
+        /// </summary>
+        protected static List<LocationDefinition> AllLocations => GetDefinitions<LocationDefinition>(Data.Locations);
+
+        /// <summary>
+        /// Instances of all the Message definitions in the game
+        /// </summary>
+        protected static List<MessageDefinition> AllMessages => GetDefinitions<MessageDefinition>(Data.Messages);
+
+        /// <summary>
+        /// Instances of all the 2D Particle Emitter definitions in the game
+        /// </summary>
+        protected static List<ParticleEmitter2DDefinition> AllParticles => GetDefinitions<ParticleEmitter2DDefinition>(Data.Particles);
+
+        /// <summary>
+        /// Instances of all the Sprite Group definitions in the game
+        /// </summary>
+        protected static List<SpriteGroupDefinition> AllSpriteGroups => GetDefinitions<SpriteGroupDefinition>(Data.SpriteGroups);
+
+        /// <summary>
+        /// Instances of all the Trait definitions in the game
+        /// </summary>
+        protected static List<TraitDefinition> AllTraits => GetDefinitions<TraitDefinition>(Data.Traits);
+
+        #endregion
+
         #region Locations
 
         /// <summary>
@@ -79,21 +154,9 @@ namespace HunieMod
         /// </summary>
         protected static LocationId? CurrentLocation => (LocationId?)CurrentLocationDef?.id;
 
-        /// <summary>
-        /// Instances of all the location definitions in the game
-        /// </summary>
-        protected static LocationDefinition[] AllLocations => Data.Locations.GetLocationsByType(LocationType.DATE)
-                                                                .Concat(Data.Locations.GetLocationsByType(LocationType.NORMAL))
-                                                                .ToArray();
-
         #endregion
 
         #region Girls
-
-        /// <summary>
-        /// Instances of all the cellphone app definitions in the game
-        /// </summary>
-        protected static CellAppDefinition[] AllCellApps => Resources.FindObjectsOfTypeAll(typeof(CellAppDefinition)) as CellAppDefinition[];
 
         /// <summary>
         /// The definition of the girl that is currently active
@@ -126,23 +189,18 @@ namespace HunieMod
         protected static GirlId? CurrentStageAltGirl => (GirlId?)CurrentStageAltGirlObject?.definition.id;
 
         /// <summary>
-        /// Instances of all the girl definitions in the game
-        /// </summary>
-        protected static List<GirlDefinition> AllGirls => Data.Girls.GetAll();
-
-        /// <summary>
         /// Tries to find an instance of a girl's definition that matches with the specified ID
         /// </summary>
         /// <param name="girlId">The ID of the girl to find</param>
         /// <returns>The definition of the girl, or default if not found</returns>
-        public static GirlDefinition GetGirl(GirlId girlId) => AllGirls.FirstOrDefault(girl => (GirlId)girl.id == girlId);
+        protected static GirlDefinition GetGirl(GirlId girlId) => AllGirls.FirstOrDefault(girl => (GirlId)girl.id == girlId);
 
         /// <summary>
         /// Tries to find an instance of a girl's definition with the specified name, case-insensitive
         /// </summary>
         /// <param name="firstName">The first name of the girl to find</param>
         /// <returns>The definition of the girl, or default if not found</returns>
-        public static GirlDefinition GetGirl(string firstName) => AllGirls.FirstOrDefault(girl => string.Equals(girl.firstName, firstName, StringComparison.OrdinalIgnoreCase));
+        protected static GirlDefinition GetGirl(string firstName) => AllGirls.FirstOrDefault(girl => string.Equals(girl.firstName, firstName, StringComparison.OrdinalIgnoreCase));
 
         #endregion
 
@@ -205,6 +263,17 @@ namespace HunieMod
                 add { GameStage.StageStartedEvent += value; }
                 remove { GameStage.StageStartedEvent -= value; }
             }
+        }
+
+        #endregion
+
+        #region Internal Methods
+
+        private static List<T> GetDefinitions<T>(object instance) where T : Definition
+        {
+            if (instance == null) throw new ArgumentNullException(nameof(instance));
+            var field = AccessTools.Field(instance.GetType(), "_definitions") ?? throw new InvalidOperationException($"Field _definitions was not found on type {instance.GetType()}");
+            return (field.GetValue(instance) as Dictionary<int, T>).Values.ToList();
         }
 
         #endregion
