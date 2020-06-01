@@ -9,9 +9,24 @@ namespace HunieMod
     /// <summary>
     /// The base plugin type that adds HuniePop-specific functionality over the default <see cref="BaseUnityPlugin"/>
     /// </summary>
-    [BepInPlugin("com.lounger.huniemod", "HunieMod", "1.0.0.0")]
+    [BepInPlugin(PLUGIN_GUID, PLUGIN_NAME, PLUGIN_VERSION)]
     public class BaseHunieModPlugin : BaseUnityPlugin
     {
+        /// <summary>
+        /// The identifier of this plugin
+        /// </summary>
+        public const string PLUGIN_GUID = "com.lounger.huniemod";
+
+        /// <summary>
+        /// The name of this plugin
+        /// </summary>
+        public const string PLUGIN_NAME = "HunieMod";
+
+        /// <summary>
+        /// The version of this plugin
+        /// </summary>
+        public const string PLUGIN_VERSION = "0.1.0.0";
+
         #region Game core
 
         /// <summary>
