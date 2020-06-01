@@ -25,24 +25,54 @@ namespace HunieMod
         public static T GetRandom<T>() where T : Definition
         {
             List<T> definitions;
-            var type = typeof(T);
-
-            if (type == typeof(AbilityDefinition)) definitions = Abilities as List<T>;
-            else if (type == typeof(ActionMenuItemDefinition)) definitions = ActionMenuItems as List<T>;
-            else if (type == typeof(CellAppDefinition)) definitions = CellApps as List<T>;
-            else if (type == typeof(DebugProfile)) definitions = DebugProfiles as List<T>;
-            else if (type == typeof(DialogSceneDefinition)) definitions = DialogScenes as List<T>;
-            else if (type == typeof(DialogTriggerDefinition)) definitions = DialogTriggers as List<T>;
-            else if (type == typeof(EnergyTrailDefinition)) definitions = EnergyTrails as List<T>;
-            else if (type == typeof(GirlDefinition)) definitions = Girls as List<T>;
-            else if (type == typeof(ItemDefinition)) definitions = Items as List<T>;
-            else if (type == typeof(LocationDefinition)) definitions = Locations as List<T>;
-            else if (type == typeof(MessageDefinition)) definitions = Messages as List<T>;
-            else if (type == typeof(ParticleEmitter2DDefinition)) definitions = Particles as List<T>;
-            else if (type == typeof(SpriteGroupDefinition)) definitions = SpriteGroups as List<T>;
-            else if (type == typeof(TraitDefinition)) definitions = Traits as List<T>;
-            else definitions = new List<T>();
-
+            switch (typeof(T).Name)
+            {
+                case nameof(AbilityDefinition):
+                    definitions = Abilities as List<T>;
+                    break;
+                case nameof(ActionMenuItemDefinition):
+                    definitions = ActionMenuItems as List<T>;
+                    break;
+                case nameof(CellAppDefinition):
+                    definitions = CellApps as List<T>;
+                    break;
+                case nameof(DebugProfile):
+                    definitions = DebugProfiles as List<T>;
+                    break;
+                case nameof(DialogSceneDefinition):
+                    definitions = DialogScenes as List<T>;
+                    break;
+                case nameof(DialogTriggerDefinition):
+                    definitions = DialogTriggers as List<T>;
+                    break;
+                case nameof(EnergyTrailDefinition):
+                    definitions = EnergyTrails as List<T>;
+                    break;
+                case nameof(GirlDefinition):
+                    definitions = Girls as List<T>;
+                    break;
+                case nameof(ItemDefinition):
+                    definitions = Items as List<T>;
+                    break;
+                case nameof(LocationDefinition):
+                    definitions = Locations as List<T>;
+                    break;
+                case nameof(MessageDefinition):
+                    definitions = Messages as List<T>;
+                    break;
+                case nameof(ParticleEmitter2DDefinition):
+                    definitions = Particles as List<T>;
+                    break;
+                case nameof(SpriteGroupDefinition):
+                    definitions = SpriteGroups as List<T>;
+                    break;
+                case nameof(TraitDefinition):
+                    definitions = Traits as List<T>;
+                    break;
+                default:
+                    definitions = new List<T>();
+                    break;
+            }
             return definitions[UnityEngine.Random.Range(0, definitions.Count)];
         }
 
