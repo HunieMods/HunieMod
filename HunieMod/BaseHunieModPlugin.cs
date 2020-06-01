@@ -33,38 +33,38 @@ namespace HunieMod
         /// <summary>
         /// General game manager containing all other managers and general game settings
         /// </summary>
-        protected static GameManager Game => GameManager.System;
+        public static GameManager Game => GameManager.System;
 
         /// <summary>
         /// General data class containing nearly all of the game's assets definitions
         /// </summary>
-        protected static GameData Data => GameManager.Data;
+        public static GameData Data => GameManager.Data;
 
         /// <summary>
         /// The game's main camera
         /// </summary>
-        protected static Camera MainCam => GameManager.System.gameCamera.mainCamera;
+        public static Camera MainCam => GameManager.System.gameCamera.mainCamera;
 
         /// <summary>
         /// The root container on which all visible elements are placed
         /// </summary>
-        protected static Stage GameStage => GameManager.Stage;
+        public static Stage GameStage => GameManager.Stage;
 
         /// <summary>
         /// Manages location traveling, arrivals and departures
         /// </summary>
-        protected static LocationManager Location => Game.Location;
+        public static LocationManager Location => Game.Location;
 
         /// <summary>
         /// The main player's settings, stats and active game variables
         /// </summary>
-        protected static PlayerManager Player => Game.Player;
+        public static PlayerManager Player => Game.Player;
 
         /// <summary>
         /// Manages going to puzzle locations and puzzle game logic, whereas <see cref="PuzzleManager.Game"/>
         /// manages the more visual aspects of the puzzle game
         /// </summary>
-        protected static PuzzleManager Puzzle => Game.Puzzle;
+        public static PuzzleManager Puzzle => Game.Puzzle;
 
         #endregion
 
@@ -73,72 +73,72 @@ namespace HunieMod
         /// <summary>
         /// Instances of all the Ability definitions in the game
         /// </summary>
-        protected static List<AbilityDefinition> AllAbilities => GetDefinitions<AbilityDefinition>(Data.Abilities);
+        public static List<AbilityDefinition> AllAbilities => GetDefinitions<AbilityDefinition>(Data.Abilities);
 
         /// <summary>
         /// Instances of all the Action Menu Item definitions in the game
         /// </summary>
-        protected static List<ActionMenuItemDefinition> AllActionMenuItems => GetDefinitions<ActionMenuItemDefinition>(Data.ActionMenuItems);
+        public static List<ActionMenuItemDefinition> AllActionMenuItems => GetDefinitions<ActionMenuItemDefinition>(Data.ActionMenuItems);
 
         /// <summary>
         /// Instances of all the cellphone app definitions in the game
         /// </summary>
-        protected static List<CellAppDefinition> AllCellApps => GetDefinitions<CellAppDefinition>(Data.CellApps);
+        public static List<CellAppDefinition> AllCellApps => GetDefinitions<CellAppDefinition>(Data.CellApps);
 
         /// <summary>
         /// Instances of all the Debug Profile definitions in the game
         /// </summary>
-        protected static List<DebugProfile> AllDebugProfiles => GetDefinitions<DebugProfile>(Data.DebugProfiles);
+        public static List<DebugProfile> AllDebugProfiles => GetDefinitions<DebugProfile>(Data.DebugProfiles);
 
         /// <summary>
         /// Instances of all the Dialog Scene definitions in the game
         /// </summary>
-        protected static List<DialogSceneDefinition> AllDialogScenes => GetDefinitions<DialogSceneDefinition>(Data.DialogScenes);
+        public static List<DialogSceneDefinition> AllDialogScenes => GetDefinitions<DialogSceneDefinition>(Data.DialogScenes);
 
         /// <summary>
         /// Instances of all the Dialog Trigger definitions in the game
         /// </summary>
-        protected static List<DialogTriggerDefinition> AllDialogTriggers => GetDefinitions<DialogTriggerDefinition>(Data.DialogTriggers);
+        public static List<DialogTriggerDefinition> AllDialogTriggers => GetDefinitions<DialogTriggerDefinition>(Data.DialogTriggers);
 
         /// <summary>
         /// Instances of all the Energy Trail definitions in the game
         /// </summary>
-        protected static List<EnergyTrailDefinition> AllEnergyTrails => GetDefinitions<EnergyTrailDefinition>(Data.EnergyTrails);
+        public static List<EnergyTrailDefinition> AllEnergyTrails => GetDefinitions<EnergyTrailDefinition>(Data.EnergyTrails);
 
         /// <summary>
         /// Instances of all the girl definitions in the game
         /// </summary>
-        protected static List<GirlDefinition> AllGirls => Data.Girls.GetAll();
+        public static List<GirlDefinition> AllGirls => Data.Girls.GetAll();
 
         /// <summary>
         /// Instances of all the Item definitions in the game
         /// </summary>
-        protected static List<ItemDefinition> AllItems => GetDefinitions<ItemDefinition>(Data.Items);
+        public static List<ItemDefinition> AllItems => GetDefinitions<ItemDefinition>(Data.Items);
 
         /// <summary>
         /// Instances of all the location definitions in the game
         /// </summary>
-        protected static List<LocationDefinition> AllLocations => GetDefinitions<LocationDefinition>(Data.Locations);
+        public static List<LocationDefinition> AllLocations => GetDefinitions<LocationDefinition>(Data.Locations);
 
         /// <summary>
         /// Instances of all the Message definitions in the game
         /// </summary>
-        protected static List<MessageDefinition> AllMessages => GetDefinitions<MessageDefinition>(Data.Messages);
+        public static List<MessageDefinition> AllMessages => GetDefinitions<MessageDefinition>(Data.Messages);
 
         /// <summary>
         /// Instances of all the 2D Particle Emitter definitions in the game
         /// </summary>
-        protected static List<ParticleEmitter2DDefinition> AllParticles => GetDefinitions<ParticleEmitter2DDefinition>(Data.Particles);
+        public static List<ParticleEmitter2DDefinition> AllParticles => GetDefinitions<ParticleEmitter2DDefinition>(Data.Particles);
 
         /// <summary>
         /// Instances of all the Sprite Group definitions in the game
         /// </summary>
-        protected static List<SpriteGroupDefinition> AllSpriteGroups => GetDefinitions<SpriteGroupDefinition>(Data.SpriteGroups);
+        public static List<SpriteGroupDefinition> AllSpriteGroups => GetDefinitions<SpriteGroupDefinition>(Data.SpriteGroups);
 
         /// <summary>
         /// Instances of all the Trait definitions in the game
         /// </summary>
-        protected static List<TraitDefinition> AllTraits => GetDefinitions<TraitDefinition>(Data.Traits);
+        public static List<TraitDefinition> AllTraits => GetDefinitions<TraitDefinition>(Data.Traits);
 
         #endregion
 
@@ -147,12 +147,12 @@ namespace HunieMod
         /// <summary>
         /// The definition of the location that is currently active
         /// </summary>
-        protected static LocationDefinition CurrentLocationDef => Location?.currentLocation;
+        public static LocationDefinition CurrentLocationDef => Location?.currentLocation;
 
         /// <summary>
         /// The ID of the location that is currently active
         /// </summary>
-        protected static LocationId? CurrentLocation => (LocationId?)CurrentLocationDef?.id;
+        public static LocationId? CurrentLocation => (LocationId?)CurrentLocationDef?.id;
 
         #endregion
 
@@ -161,46 +161,46 @@ namespace HunieMod
         /// <summary>
         /// The definition of the girl that is currently active
         /// </summary>
-        protected static GirlDefinition CurrentGirlDef => Location?.currentGirl;
+        public static GirlDefinition CurrentGirlDef => Location?.currentGirl;
 
         /// <summary>
         /// The visual object of the main girl currently on the stage
         /// </summary>
-        protected static Girl CurrentStageGirlObject => GameStage.girl;
+        public static Girl CurrentStageGirlObject => GameStage.girl;
 
         /// <summary>
         /// The visual object of the alt. girl currently on the stage
         /// </summary>
-        protected static Girl CurrentStageAltGirlObject => GameStage.altGirl;
+        public static Girl CurrentStageAltGirlObject => GameStage.altGirl;
 
         /// <summary>
         /// The ID of the girl that is currently active
         /// </summary>
-        protected static GirlId? CurrentGirl => (GirlId?)CurrentGirlDef?.id;
+        public static GirlId? CurrentGirl => (GirlId?)CurrentGirlDef?.id;
 
         /// <summary>
         /// The ID of the main girl currently on the stage
         /// </summary>
-        protected static GirlId? CurrentStageGirl => (GirlId?)CurrentStageGirlObject?.definition.id;
+        public static GirlId? CurrentStageGirl => (GirlId?)CurrentStageGirlObject?.definition.id;
 
         /// <summary>
         /// The ID of the alt. girl currently on the stage
         /// </summary>
-        protected static GirlId? CurrentStageAltGirl => (GirlId?)CurrentStageAltGirlObject?.definition.id;
+        public static GirlId? CurrentStageAltGirl => (GirlId?)CurrentStageAltGirlObject?.definition.id;
 
         /// <summary>
         /// Tries to find an instance of a girl's definition that matches with the specified ID
         /// </summary>
         /// <param name="girlId">The ID of the girl to find</param>
         /// <returns>The definition of the girl, or default if not found</returns>
-        protected static GirlDefinition GetGirl(GirlId girlId) => AllGirls.FirstOrDefault(girl => (GirlId)girl.id == girlId);
+        public static GirlDefinition GetGirl(GirlId girlId) => AllGirls.FirstOrDefault(girl => (GirlId)girl.id == girlId);
 
         /// <summary>
         /// Tries to find an instance of a girl's definition with the specified name, case-insensitive
         /// </summary>
         /// <param name="firstName">The first name of the girl to find</param>
         /// <returns>The definition of the girl, or default if not found</returns>
-        protected static GirlDefinition GetGirl(string firstName) => AllGirls.FirstOrDefault(girl => string.Equals(girl.firstName, firstName, StringComparison.OrdinalIgnoreCase));
+        public static GirlDefinition GetGirl(string firstName) => AllGirls.FirstOrDefault(girl => string.Equals(girl.firstName, firstName, StringComparison.OrdinalIgnoreCase));
 
         #endregion
 
@@ -216,7 +216,7 @@ namespace HunieMod
         /// <summary>
         /// Event helper that wraps certain key game events
         /// </summary>
-        public class EventManager
+        protected class EventManager
         {
             /// <summary>
             /// Fires after <see cref="GameManager.Pause"/> has frozen all game elements but the cellphone
