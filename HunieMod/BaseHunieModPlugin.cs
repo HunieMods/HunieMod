@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using BepInEx;
 using HarmonyLib;
@@ -27,6 +28,11 @@ namespace HunieMod
         /// The version of this plugin
         /// </summary>
         public const string PLUGIN_VERSION = "0.1.0.0";
+
+        /// <summary>
+        /// The directory where this plugin resides
+        /// </summary>
+        public readonly string BASE_DIR = Path.GetDirectoryName(typeof(BaseHunieModPlugin).Assembly.Location);
 
         #region Game core
 

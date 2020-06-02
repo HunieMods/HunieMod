@@ -93,7 +93,7 @@
       <ReadmeFile Include="$(SolutionDir)README.md" />
     </ItemGroup>
     <Move SourceFiles="@(CoreFiles)" DestinationFolder="$(TargetDir)BepInEx\core" />
-    <Move SourceFiles="@(PluginFiles)" DestinationFolder="$(TargetDir)BepInEx\plugins" />
+    <Move SourceFiles="@(PluginFiles)" DestinationFolder="$(TargetDir)BepInEx\plugins\$(SolutionName)" />
     <Copy SourceFiles="@(ConfigFile)" DestinationFolder="$(TargetDir)BepInEx\config" />
     <Copy SourceFiles="@(DoorstopConfigFile)" DestinationFolder="$(TargetDir)" />
     <Copy SourceFiles="@(DoorstopProxyFile)" DestinationFolder="$(TargetDir)" />
