@@ -54,9 +54,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseHunieModPlugin.cs" />
-    <Compile Include="Definitions.cs" />
-    <Compile Include="LocationId.cs" />
-    <Compile Include="GirlId.cs" />
+    <Compile Include="Data\Definitions.cs" />
+    <Compile Include="Enums\LocationId.cs" />
+    <Compile Include="Enums\GirlId.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
