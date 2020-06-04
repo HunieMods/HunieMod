@@ -6,7 +6,7 @@
     public enum LocationId
     {
         /// <summary>
-        /// Your Bedroom (Date - Indoor - Bonus)
+        /// Your Bedroom (Date - Bonus)
         /// </summary>
         BedroomBonus = 1,
         /// <summary>
@@ -14,7 +14,7 @@
         /// </summary>
         Park = 2,
         /// <summary>
-        /// Nutmeg Cafe (Normal - Indoor)
+        /// Nutmeg Cafe (Normal)
         /// </summary>
         Cafe = 3,
         /// <summary>
@@ -22,11 +22,11 @@
         /// </summary>
         Beach = 4,
         /// <summary>
-        /// Bar &amp; Lounge (Normal - Indoor)
+        /// Bar &amp; Lounge (Normal)
         /// </summary>
         Bar = 5,
         /// <summary>
-        /// Corkscrew Carnival (Date - Indoor)
+        /// Corkscrew Carnival (Date)
         /// </summary>
         Carnival = 6,
         /// <summary>
@@ -34,63 +34,63 @@
         /// </summary>
         Campus = 7,
         /// <summary>
-        /// Fitness Club (Normal - Indoor)
+        /// Fitness Club (Normal)
         /// </summary>
         Gym = 8,
         /// <summary>
-        /// Shopping Mall (Normal - Indoor)
+        /// Shopping Mall (Normal)
         /// </summary>
         Mall = 9,
         /// <summary>
-        /// Farmers Market (Date - Indoor)
+        /// Farmers Market (Date)
         /// </summary>
         Market = 10,
         /// <summary>
-        /// Lusties Nightclub (Normal - Indoor)
+        /// Lusties Nightclub (Normal)
         /// </summary>
         Nightclub = 11,
         /// <summary>
-        /// Gold Falls Casino (Date - Indoor)
+        /// Gold Falls Casino (Date)
         /// </summary>
         Casino = 12,
         /// <summary>
-        /// Outdoor Lounge (Date - Indoor)
+        /// Outdoor Lounge (Date)
         /// </summary>
         Lounge = 13,
         /// <summary>
-        /// Botanical Garden (Date - Indoor)
+        /// Botanical Garden (Date)
         /// </summary>
         Garden = 14,
         /// <summary>
-        /// Hot Spring (Date - Indoor)
+        /// Hot Spring (Date)
         /// </summary>
         Spring = 15,
         /// <summary>
-        /// Hiking Trail (Date - Indoor)
+        /// Hiking Trail (Date)
         /// </summary>
         Trail = 16,
         /// <summary>
-        /// Ice Rink (Date - Indoor)
+        /// Ice Rink (Date)
         /// </summary>
         Rink = 17,
         /// <summary>
-        /// Water Park (Date - Indoor)
+        /// Water Park (Date)
         /// </summary>
         WaterPark = 18,
         /// <summary>
-        /// Tennis Courts (Date - Indoor)
+        /// Tennis Courts (Date)
         /// </summary>
         Courts = 19,
         /// <summary>
-        /// Scenic Overlook (Date - Indoor)
+        /// Scenic Overlook (Date)
         /// </summary>
         Overlook = 20,
         /// <summary>
-        /// Vinnie's Restaurant (Date - Indoor)
+        /// Vinnie's Restaurant (Date)
         /// </summary>
         Restaurant = 21,
         /// <summary>
-        /// Your Bedroom (Normal - Indoor - After bonus)
+        /// Your Bedroom (Normal - After bonus)
         /// </summary>
         Bedroom = 22
     }
