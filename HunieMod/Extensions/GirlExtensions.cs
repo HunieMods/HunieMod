@@ -1,4 +1,7 @@
-﻿using HarmonyLib;
+﻿using BepInEx;
+using HarmonyLib;
+using System.Diagnostics;
+using UnityEngine;
 
 namespace HunieMod
 {
@@ -12,7 +15,10 @@ namespace HunieMod
         /// </summary>
         /// <param name="girl">The <see cref="Girl"/> instance the piece will be added to.</param>
         /// <param name="girlPiece">The piece to be added to the <see cref="Girl"/> instance. Most can be obtained using <see cref="GirlDefinition.GetPiecesByType"/></param>
-        /// <remarks>Note that this expects that the <see cref="GirlPiece.art"/> (specifically <see cref="GirlPieceArt.spriteName"/>) values exist in <see cref="Girl.spriteCollection"/>.</remarks>
+        /// <remarks>
+        /// Note that this expects that the <see cref="GirlPiece.art"/> (specifically <see cref="GirlPieceArt.spriteName"/>) values exist in <see cref="Girl.spriteCollection"/>.
+        /// All the existing children of the container where the piece will be added to will be destroyed.
+        /// </remarks>
         public static void AddGirlPiece(this Girl girl, GirlPiece girlPiece)
         {
             AccessTools.Method(typeof(Girl), nameof(AddGirlPiece)).Invoke(girl, new object[] { girlPiece });
@@ -23,7 +29,7 @@ namespace HunieMod
         /// </summary>
         /// <param name="girl">The <see cref="Girl"/> instance the piece art will be added to.</param>
         /// <param name="girlPieceArt">The piece art to be added to the <see cref="Girl"/> instance.</param>
-        /// <param name="container">The container to which to add the piece art to.</param>
+        /// <param name="container">The container to which to add the piece art to. All the existing children of the container will be destroyed.</param>
         /// <remarks>Note that this expects that the <see cref="GirlPieceArt.spriteName"/> value exist in <see cref="Girl.spriteCollection"/>.</remarks>
         public static void AddGirlPieceArtToContainer(this Girl girl, GirlPieceArt girlPieceArt, DisplayObject container)
         {
