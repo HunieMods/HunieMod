@@ -57,6 +57,7 @@
     <Compile Include="Data\Definitions.cs" />
     <Compile Include="Enums\LocationId.cs" />
     <Compile Include="Enums\GirlId.cs" />
+    <Compile Include="Extensions\GirlExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
