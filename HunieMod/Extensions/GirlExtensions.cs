@@ -6,7 +6,7 @@ using UnityEngine;
 namespace HunieMod
 {
     /// <summary>
-    /// Extensions for the <see cref="Girl"/> class. Currently all of these are wrappers for private methods.
+    /// A collection of helpers and method wrappers for the <see cref="Girl"/> class.
     /// </summary>
     public static class GirlExtensions
     {
@@ -34,6 +34,32 @@ namespace HunieMod
         public static void AddGirlPieceArtToContainer(this Girl girl, GirlPieceArt girlPieceArt, DisplayObject container)
         {
             AccessTools.Method(typeof(Girl), nameof(AddGirlPieceArtToContainer)).Invoke(girl, new object[] { girlPieceArt, container });
+        }
+
+        /// <summary>
+        /// Adds the specified sprite object to the specified container, using the sprite's metadata from the specified piece art.
+        /// </summary>
+        /// <param name="girl">The <see cref="Girl"/> instance the sprite object will be added to (only used for alt. girl checking).</param>
+        /// <param name="sprite">The sprite object to add.</param>
+        /// <param name="pieceArt">The piece art with metadata for the sprite object.</param>
+        /// <param name="container">The container to which to add the sprite object to.</param>
+        /// <param name="removeChildren">Whether to remove and destroy all existing children in the container.</param>
+        /// <remarks>
+        /// An alternative way to add sprites to any container, making it possible to manually manage the <see cref="tk2dBaseSprite.Collection"/>
+        /// and the option to keep any existing children in the container.
+        /// </remarks>
+        public static void AddSpriteObjectToContainer(this Girl girl, SpriteObject sprite, GirlPieceArt pieceArt, DisplayObject container, bool removeChildren = true)
+        {
+            if (sprite != null && pieceArt != null && container != null && !pieceArt.spriteName.IsNullOrWhiteSpace())
+            {
+                if (removeChildren && container.GetChildren().Length > 0)
+                    container.RemoveAllChildren(true);
+
+                container.AddChild(sprite);
+                sprite.sprite.FlipX = girl.flip;
+                var offsetX = girl.flip ? GameCamera.SCREEN_DEFAULT_WIDTH : 0;
+                sprite.SetLocalPosition(Mathf.Abs(offsetX - pieceArt.x), -pieceArt.y);
+            }
         }
 
         /// <summary>
