@@ -25,7 +25,7 @@ namespace HunieMod
         /// <summary>
         /// The version of this plugin
         /// </summary>
-        public const string PLUGIN_VERSION = "0.1.0.0";
+        public const string PLUGIN_VERSION = "0.2.0.0";
 
         /// <summary>
         /// The directory where this plugin resides

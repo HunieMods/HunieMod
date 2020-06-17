@@ -1,5 +1,5 @@
 <configuration>
-    <dllmap dll="dl" target="libdl.so.2"/>
+	<dllmap dll="dl" target="libdl.so.2"/>
 	<dllmap dll="i:cygwin1.dll" target="libc.dylib" os="!windows" />
 	<dllmap dll="libc" target="libc.dylib" os="!windows"/>
 	<dllmap dll="intl" target="libintl.dylib" os="!windows"/>
