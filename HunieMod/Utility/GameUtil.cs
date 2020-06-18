@@ -134,7 +134,8 @@ namespace HunieMod
                 if (!excludeCurrentGirl || GM.System.Location.currentGirl != girl)
                 {
                     var girlData = GM.System.Player.GetGirlData(girl);
-                    var girlLocation = girl.IsAtLocationAtTime(clock.Weekday(clock.TotalMinutesElapsed(360), true), clock.DayTime(clock.TotalMinutesElapsed(360)));
+                    var girlLocation = girl.IsAtLocationAtTime(clock.Weekday(clock.TotalMinutesElapsed(ClockManager.MINUTES_PER_DAYTIME), true),
+                                                               clock.DayTime(clock.TotalMinutesElapsed(ClockManager.MINUTES_PER_DAYTIME)));
 
                     if ((!metOnly || girlData.metStatus == GirlMetStatus.MET) && (!availableOnly || girlLocation != null))
                         girls.Add(girl);
