@@ -363,7 +363,7 @@ namespace HunieMod
             // Set a pre-defined index instead
             GM.Stage.uiTop.SetOwnChildIndex(show ? 7 : 2);
 
-            GM.Stage.cellPhone.localX = show ? 103f : -563f;
+            GM.Stage.cellPhone.localX = show ? UICellPhone.OPEN_X_POSITION : UICellPhone.CLOSED_X_POSITION;
             GM.Stage.cellPhone.interactive = show;
             GM.Stage.uiTop.pauseOverlay.spriteAlpha = show ? 0.5f : 0f;
 
