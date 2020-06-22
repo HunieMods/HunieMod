@@ -65,7 +65,7 @@ namespace HunieMod
         /// <summary>
         /// Forces a facial expression on the girl.
         /// </summary>
-        /// <param name="girl">The girl on which to set the expression on.</param>
+        /// <param name="girl">The <see cref="Girl"/> instance on which to set the expression on.</param>
         /// <param name="expressionType">The type of expression to set.</param>
         /// <param name="changeEyes">When <c>true</c>, also set the girl's eyes to the one that belongs to the specified expression.</param>
         /// <param name="changeMouth">When <c>true</c>, also set the girl's mouth to the one that belongs to the specified expression.</param>
@@ -88,7 +88,7 @@ namespace HunieMod
         /// <summary>
         /// Forces a facial expression on the specified girl.
         /// </summary>
-        /// <param name="girl">The girl on which to set the expression on.</param>
+        /// <param name="girl">The <see cref="Girl"/> instance on which to set the expression on.</param>
         /// <param name="pieceIndex">Which index of <see cref="GirlDefinition.pieces"/> to set.</param>
         /// <param name="changeEyes">When <c>true</c>, also set the girl's eyes to the one that belongs to the specified expression.</param>
         /// <param name="changeMouth">When <c>true</c>, also set the girl's mouth to the one that belongs to the specified expression.</param>
