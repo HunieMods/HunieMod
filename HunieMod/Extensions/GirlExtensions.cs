@@ -1,4 +1,5 @@
-﻿using BepInEx;
+﻿using System;
+using BepInEx;
 using HarmonyLib;
 using UnityEngine;
 
@@ -58,6 +59,69 @@ namespace HunieMod
                 sprite.sprite.FlipX = girl.flip;
                 var offsetX = girl.flip ? GameCamera.SCREEN_DEFAULT_WIDTH : 0;
                 sprite.SetLocalPosition(Mathf.Abs(offsetX - pieceArt.x), -pieceArt.y);
+            }
+        }
+
+        /// <summary>
+        /// Forces a facial expression on the girl.
+        /// </summary>
+        /// <param name="girl">The girl on which to set the expression on.</param>
+        /// <param name="expressionType">The type of expression to set.</param>
+        /// <param name="changeEyes">When <c>true</c>, also set the girl's eyes to the one that belongs to the specified expression.</param>
+        /// <param name="changeMouth">When <c>true</c>, also set the girl's mouth to the one that belongs to the specified expression.</param>
+        /// <remarks>
+        /// The girl's eyebrows and face/blush are always set.
+        /// When the specified expression is not found, the girl's <see cref="GirlDefinition.defaultExpression"/> will be used.
+        /// </remarks>
+        public static void ForceExpression(this Girl girl, GirlExpressionType expressionType, bool changeEyes = true, bool changeMouth = true)
+        {
+            if (girl.definition == null)
+                throw new InvalidOperationException($"{nameof(girl)}.{nameof(girl.definition)} is null");
+
+            int index = girl.definition.pieces.FindIndex(p => p.type == GirlPieceType.EXPRESSION && p.expressionType == expressionType);
+            if (index == -1)
+                index = girl.definition.defaultExpression;
+
+            girl.ForceExpression(index, changeEyes, changeMouth);
+        }
+
+        /// <summary>
+        /// Forces a facial expression on the specified girl.
+        /// </summary>
+        /// <param name="girl">The girl on which to set the expression on.</param>
+        /// <param name="pieceIndex">Which index of <see cref="GirlDefinition.pieces"/> to set.</param>
+        /// <param name="changeEyes">When <c>true</c>, also set the girl's eyes to the one that belongs to the specified expression.</param>
+        /// <param name="changeMouth">When <c>true</c>, also set the girl's mouth to the one that belongs to the specified expression.</param>
+        /// <remarks>
+        /// The girl's eyebrows and face/blush are always set.
+        /// When the specified piece is not found or it's <see cref="GirlPiece.type"/> is not <see cref="GirlPieceType.EXPRESSION"/>,
+        /// the girl's <see cref="GirlDefinition.defaultExpression"/> will be used.
+        /// </remarks>
+        public static void ForceExpression(this Girl girl, int pieceIndex, bool changeEyes = true, bool changeMouth = true)
+        {
+            if (pieceIndex < 0 || pieceIndex >= girl.definition.pieces.Count)
+                throw new IndexOutOfRangeException(nameof(pieceIndex));
+
+            GirlPiece piece = girl.definition.pieces[pieceIndex];
+
+            if (piece == null || piece.type != GirlPieceType.EXPRESSION)
+            {
+                piece = girl.definition.pieces[girl.definition.defaultExpression];
+            }
+
+            if (piece != null)
+            {
+                if (changeEyes) girl.eyes.RemoveAllChildren();
+                girl.eyebrows.RemoveAllChildren();
+                if (changeMouth) girl.mouth.RemoveAllChildren();
+                girl.face.RemoveAllChildren();
+
+                if (changeEyes) girl.AddGirlPieceArtToContainer(piece.primaryArt, girl.eyes);
+                girl.AddGirlPieceArtToContainer(piece.secondaryArt, girl.eyebrows);
+                if (changeMouth) girl.AddGirlPieceArtToContainer(piece.tertiaryArt, girl.mouth);
+                girl.AddGirlPieceArtToContainer(piece.quaternaryArt, girl.face);
+
+                girl.ChangeExpression(piece.expressionType, true, changeEyes, changeMouth, 0.5f);
             }
         }
 
