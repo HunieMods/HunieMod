@@ -63,6 +63,9 @@ namespace HunieMod
                 case nameof(ParticleEmitter2DDefinition):
                     definitions = Particles as List<T>;
                     break;
+                case nameof(PuzzleTokenDefinition):
+                    definitions = PuzzleTokens as List<T>;
+                    break;
                 case nameof(SpriteGroupDefinition):
                     definitions = SpriteGroups as List<T>;
                     break;
