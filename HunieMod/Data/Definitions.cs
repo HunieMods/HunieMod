@@ -87,7 +87,7 @@ namespace HunieMod
         public static List<ActionMenuItemDefinition> ActionMenuItems => GetDefinitions<ActionMenuItemDefinition>(GameManager.Data.ActionMenuItems);
 
         /// <summary>
-        /// Instances of all the cellphone app definitions in the game
+        /// Instances of all the Cellphone App definitions in the game
         /// </summary>
         public static List<CellAppDefinition> CellApps => GetDefinitions<CellAppDefinition>(GameManager.Data.CellApps);
 
@@ -112,7 +112,7 @@ namespace HunieMod
         public static List<EnergyTrailDefinition> EnergyTrails => GetDefinitions<EnergyTrailDefinition>(GameManager.Data.EnergyTrails);
 
         /// <summary>
-        /// Instances of all the girl definitions in the game
+        /// Instances of all the Girl definitions in the game
         /// </summary>
         public static List<GirlDefinition> Girls => GameManager.Data.Girls.GetAll();
 
@@ -122,7 +122,7 @@ namespace HunieMod
         public static List<ItemDefinition> Items => GetDefinitions<ItemDefinition>(GameManager.Data.Items);
 
         /// <summary>
-        /// Instances of all the location definitions in the game
+        /// Instances of all the Location definitions in the game
         /// </summary>
         public static List<LocationDefinition> Locations => GetDefinitions<LocationDefinition>(GameManager.Data.Locations);
 
@@ -135,6 +135,11 @@ namespace HunieMod
         /// Instances of all the 2D Particle Emitter definitions in the game
         /// </summary>
         public static List<ParticleEmitter2DDefinition> Particles => GetDefinitions<ParticleEmitter2DDefinition>(GameManager.Data.Particles);
+
+        /// <summary>
+        /// Instances of all the Puzzle Token definitions in the game
+        /// </summary>
+        public static List<PuzzleTokenDefinition> PuzzleTokens => GameManager.Data.PuzzleTokens.GetAll().ToList();
 
         /// <summary>
         /// Instances of all the Sprite Group definitions in the game
