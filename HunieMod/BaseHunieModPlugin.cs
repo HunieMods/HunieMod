@@ -113,20 +113,6 @@ namespace HunieMod
         /// </summary>
         public static GirlId? CurrentStageAltGirl => (GirlId?)CurrentStageAltGirlObject?.definition.id;
 
-        /// <summary>
-        /// Tries to find an instance of a girl's definition that matches with the specified ID
-        /// </summary>
-        /// <param name="girlId">The ID of the girl to find</param>
-        /// <returns>The definition of the girl, or default if not found</returns>
-        public static GirlDefinition GetGirl(GirlId girlId) => Definitions.Girls.FirstOrDefault(girl => (GirlId)girl.id == girlId);
-
-        /// <summary>
-        /// Tries to find an instance of a girl's definition with the specified name, case-insensitive
-        /// </summary>
-        /// <param name="firstName">The first name of the girl to find</param>
-        /// <returns>The definition of the girl, or default if not found</returns>
-        public static GirlDefinition GetGirl(string firstName) => Definitions.Girls.FirstOrDefault(girl => string.Equals(girl.firstName, firstName, StringComparison.OrdinalIgnoreCase));
-
         #endregion
 
         #region Events

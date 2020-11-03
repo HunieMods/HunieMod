@@ -17,6 +17,8 @@ namespace HunieMod
             return (field.GetValue(instance) as Dictionary<int, T>).Values.ToList();
         }
 
+        #region Public methods
+
         /// <summary>
         /// Gets a random definition of the specified type
         /// </summary>
@@ -78,6 +80,24 @@ namespace HunieMod
             }
             return definitions[UnityEngine.Random.Range(0, definitions.Count)];
         }
+
+        /// <summary>
+        /// Tries to find an instance of a girl's definition that matches with the specified ID
+        /// </summary>
+        /// <param name="girlId">The ID of the girl to find</param>
+        /// <returns>The definition of the girl, or default if not found</returns>
+        public static GirlDefinition GetGirl(GirlId girlId) => Girls.FirstOrDefault(girl => (GirlId)girl.id == girlId);
+
+        /// <summary>
+        /// Tries to find an instance of a girl's definition with the specified name, case-insensitive
+        /// </summary>
+        /// <param name="firstName">The first name of the girl to find</param>
+        /// <returns>The definition of the girl, or default if not found</returns>
+        public static GirlDefinition GetGirl(string firstName) => Girls.FirstOrDefault(girl => string.Equals(girl.firstName, firstName, StringComparison.OrdinalIgnoreCase));
+
+        #endregion
+
+        #region Public properties
 
         /// <summary>
         /// Instances of all the Ability definitions in the game
@@ -153,5 +173,7 @@ namespace HunieMod
         /// Instances of all the Trait definitions in the game
         /// </summary>
         public static List<TraitDefinition> Traits => GetDefinitions<TraitDefinition>(GameManager.Data.Traits);
+
+        #endregion
     }
 }
