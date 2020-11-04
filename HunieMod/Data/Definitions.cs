@@ -95,6 +95,13 @@ namespace HunieMod
         /// <returns>The definition of the girl, or default if not found</returns>
         public static GirlDefinition GetGirl(string firstName) => Girls.FirstOrDefault(girl => string.Equals(girl.firstName, firstName, StringComparison.OrdinalIgnoreCase));
 
+        /// <summary>
+        /// Tries to find an instance of a location's definition that matches with the specified ID
+        /// </summary>
+        /// <param name="locationId">The ID of the location to find</param>
+        /// <returns>The definition of the location, or default if not found</returns>
+        public static LocationDefinition GetLocation(LocationId locationId) => Locations.FirstOrDefault(loc => (LocationId)loc.id == locationId);
+
         #endregion
 
         #region Public properties
