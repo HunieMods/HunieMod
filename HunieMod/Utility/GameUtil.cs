@@ -147,9 +147,9 @@ namespace HunieMod
         /// <summary>
         /// Gets a random girl that matches the specified filters.
         /// </summary>
-        /// <param name="metOnly"></param>
-        /// <param name="availableOnly"></param>
-        /// <param name="excludeCurrentGirl"></param>
+        /// <param name="metOnly">When <c>true</c>, only include girls for which <see cref="GirlPlayerData.metStatus"/> is <see cref="GirlMetStatus.MET"/>.</param>
+        /// <param name="availableOnly">When <c>true</c>, only include girls that are currently available for meeting.</param>
+        /// <param name="excludeCurrentGirl">When <c>true</c>, exclude the current active girl.</param>
         /// <returns>A random <see cref="GirlDefinition"/> matching the specified filters, or <c>null</c> when no match was found.</returns>
         public static GirlDefinition GetRandomAvailableGirl(bool metOnly = true, bool availableOnly = true, bool excludeCurrentGirl = true)
         {

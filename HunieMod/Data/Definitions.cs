@@ -6,7 +6,7 @@ using HarmonyLib;
 namespace HunieMod
 {
     /// <summary>
-    /// Helper class that provides access to all the <see cref="Definition"/> objects in the game
+    /// Helper class that provides access to all the <see cref="Definition"/> objects in the game.
     /// </summary>
     public static class Definitions
     {
@@ -20,10 +20,10 @@ namespace HunieMod
         #region Public methods
 
         /// <summary>
-        /// Gets a random definition of the specified type
+        /// Gets a random definition of the specified type.
         /// </summary>
-        /// <typeparam name="T">The type of the definition</typeparam>
-        /// <returns>A random definition of the specified type</returns>
+        /// <typeparam name="T">The type of the definition.</typeparam>
+        /// <returns>A random definition of the specified type.</returns>
         public static T GetRandom<T>() where T : Definition
         {
             List<T> definitions;
@@ -82,24 +82,24 @@ namespace HunieMod
         }
 
         /// <summary>
-        /// Tries to find an instance of a girl's definition that matches with the specified ID
+        /// Tries to find an instance of a girl's definition that matches with the specified ID.
         /// </summary>
-        /// <param name="girlId">The ID of the girl to find</param>
-        /// <returns>The definition of the girl, or default if not found</returns>
+        /// <param name="girlId">The ID of the girl to find.</param>
+        /// <returns>The definition of the girl, or default if not found.</returns>
         public static GirlDefinition GetGirl(GirlId girlId) => Girls.FirstOrDefault(girl => (GirlId)girl.id == girlId);
 
         /// <summary>
-        /// Tries to find an instance of a girl's definition with the specified name, case-insensitive
+        /// Tries to find an instance of a girl's definition with the specified name, case-insensitive.
         /// </summary>
-        /// <param name="firstName">The first name of the girl to find</param>
-        /// <returns>The definition of the girl, or default if not found</returns>
+        /// <param name="firstName">The first name of the girl to find.</param>
+        /// <returns>The definition of the girl, or default if not found.</returns>
         public static GirlDefinition GetGirl(string firstName) => Girls.FirstOrDefault(girl => string.Equals(girl.firstName, firstName, StringComparison.OrdinalIgnoreCase));
 
         /// <summary>
-        /// Tries to find an instance of a location's definition that matches with the specified ID
+        /// Tries to find an instance of a location's definition that matches with the specified ID.
         /// </summary>
-        /// <param name="locationId">The ID of the location to find</param>
-        /// <returns>The definition of the location, or default if not found</returns>
+        /// <param name="locationId">The ID of the location to find.</param>
+        /// <returns>The definition of the location, or default if not found.</returns>
         public static LocationDefinition GetLocation(LocationId locationId) => Locations.FirstOrDefault(loc => (LocationId)loc.id == locationId);
 
         #endregion
@@ -107,77 +107,77 @@ namespace HunieMod
         #region Public properties
 
         /// <summary>
-        /// Instances of all the Ability definitions in the game
+        /// Instances of all the Ability definitions in the game.
         /// </summary>
         public static List<AbilityDefinition> Abilities => GetDefinitions<AbilityDefinition>(GameManager.Data.Abilities);
 
         /// <summary>
-        /// Instances of all the Action Menu Item definitions in the game
+        /// Instances of all the Action Menu Item definitions in the game.
         /// </summary>
         public static List<ActionMenuItemDefinition> ActionMenuItems => GetDefinitions<ActionMenuItemDefinition>(GameManager.Data.ActionMenuItems);
 
         /// <summary>
-        /// Instances of all the Cellphone App definitions in the game
+        /// Instances of all the Cellphone App definitions in the game.
         /// </summary>
         public static List<CellAppDefinition> CellApps => GetDefinitions<CellAppDefinition>(GameManager.Data.CellApps);
 
         /// <summary>
-        /// Instances of all the Debug Profile definitions in the game
+        /// Instances of all the Debug Profile definitions in the game.
         /// </summary>
         public static List<DebugProfile> DebugProfiles => GetDefinitions<DebugProfile>(GameManager.Data.DebugProfiles);
 
         /// <summary>
-        /// Instances of all the Dialog Scene definitions in the game
+        /// Instances of all the Dialog Scene definitions in the game.
         /// </summary>
         public static List<DialogSceneDefinition> DialogScenes => GetDefinitions<DialogSceneDefinition>(GameManager.Data.DialogScenes);
 
         /// <summary>
-        /// Instances of all the Dialog Trigger definitions in the game
+        /// Instances of all the Dialog Trigger definitions in the game.
         /// </summary>
         public static List<DialogTriggerDefinition> DialogTriggers => GetDefinitions<DialogTriggerDefinition>(GameManager.Data.DialogTriggers);
 
         /// <summary>
-        /// Instances of all the Energy Trail definitions in the game
+        /// Instances of all the Energy Trail definitions in the game.
         /// </summary>
         public static List<EnergyTrailDefinition> EnergyTrails => GetDefinitions<EnergyTrailDefinition>(GameManager.Data.EnergyTrails);
 
         /// <summary>
-        /// Instances of all the Girl definitions in the game
+        /// Instances of all the Girl definitions in the game.
         /// </summary>
         public static List<GirlDefinition> Girls => GameManager.Data.Girls.GetAll();
 
         /// <summary>
-        /// Instances of all the Item definitions in the game
+        /// Instances of all the Item definitions in the game.
         /// </summary>
         public static List<ItemDefinition> Items => GetDefinitions<ItemDefinition>(GameManager.Data.Items);
 
         /// <summary>
-        /// Instances of all the Location definitions in the game
+        /// Instances of all the Location definitions in the game.
         /// </summary>
         public static List<LocationDefinition> Locations => GetDefinitions<LocationDefinition>(GameManager.Data.Locations);
 
         /// <summary>
-        /// Instances of all the Message definitions in the game
+        /// Instances of all the Message definitions in the game.
         /// </summary>
         public static List<MessageDefinition> Messages => GetDefinitions<MessageDefinition>(GameManager.Data.Messages);
 
         /// <summary>
-        /// Instances of all the 2D Particle Emitter definitions in the game
+        /// Instances of all the 2D Particle Emitter definitions in the game.
         /// </summary>
         public static List<ParticleEmitter2DDefinition> Particles => GetDefinitions<ParticleEmitter2DDefinition>(GameManager.Data.Particles);
 
         /// <summary>
-        /// Instances of all the Puzzle Token definitions in the game
+        /// Instances of all the Puzzle Token definitions in the game.
         /// </summary>
         public static List<PuzzleTokenDefinition> PuzzleTokens => GameManager.Data.PuzzleTokens.GetAll().ToList();
 
         /// <summary>
-        /// Instances of all the Sprite Group definitions in the game
+        /// Instances of all the Sprite Group definitions in the game.
         /// </summary>
         public static List<SpriteGroupDefinition> SpriteGroups => GetDefinitions<SpriteGroupDefinition>(GameManager.Data.SpriteGroups);
 
         /// <summary>
-        /// Instances of all the Trait definitions in the game
+        /// Instances of all the Trait definitions in the game.
         /// </summary>
         public static List<TraitDefinition> Traits => GetDefinitions<TraitDefinition>(GameManager.Data.Traits);
 

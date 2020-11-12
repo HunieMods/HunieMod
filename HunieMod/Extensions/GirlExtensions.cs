@@ -14,7 +14,7 @@ namespace HunieMod
         /// Adds all the <see cref="GirlPieceArt"/> contained in the specified <see cref="GirlPiece"/> to the correct container/layer of this girl.
         /// </summary>
         /// <param name="girl">The <see cref="Girl"/> instance the piece will be added to.</param>
-        /// <param name="girlPiece">The piece to be added to the <see cref="Girl"/> instance. Most can be obtained using <see cref="GirlDefinition.GetPiecesByType"/></param>
+        /// <param name="girlPiece">The piece to be added to the <see cref="Girl"/> instance. Most can be obtained using <see cref="GirlDefinition.GetPiecesByType"/>.</param>
         /// <remarks>
         /// Note that this expects that the <see cref="GirlPiece.art"/> (specifically <see cref="GirlPieceArt.spriteName"/>) values exist in <see cref="Girl.spriteCollection"/>.
         /// All the existing children of the container where the piece will be added to will be destroyed.
@@ -126,7 +126,7 @@ namespace HunieMod
         }
 
         /// <summary>
-        /// Gets the container for the specified <see cref="GirlLayer"/> for this girl
+        /// Gets the container for the specified <see cref="GirlLayer"/> for this girl.
         /// </summary>
         /// <param name="girl">The <see cref="Girl"/> instance the container belongs to.</param>
         /// <param name="layer">The layer to get the container for.</param>

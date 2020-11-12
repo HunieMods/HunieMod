@@ -1,7 +1,7 @@
 ﻿namespace HunieMod
 {
     /// <summary>
-    /// Girl IDs that can be compared to the <see cref="Definition.id"/> field on <see cref="GirlDefinition"/>
+    /// Girl IDs that can be compared to the <see cref="Definition.id"/> field on <see cref="GirlDefinition"/>.
     /// </summary>
     public enum GirlId
     {

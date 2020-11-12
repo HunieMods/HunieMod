@@ -1,7 +1,7 @@
 ﻿namespace HunieMod
 {
     /// <summary>
-    /// Location IDs that can be compared to the <see cref="Definition.id"/> field on <see cref="LocationDefinition"/>
+    /// Location IDs that can be compared to the <see cref="Definition.id"/> field on <see cref="LocationDefinition"/>.
     /// </summary>
     public enum LocationId
     {
