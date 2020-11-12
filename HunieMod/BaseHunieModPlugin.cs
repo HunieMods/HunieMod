@@ -9,28 +9,28 @@ namespace HunieMod
     /// <summary>
     /// The base plugin type that adds HuniePop-specific functionality over the default <see cref="BaseUnityPlugin"/>.
     /// </summary>
-    [BepInPlugin(PLUGIN_GUID, PLUGIN_NAME, PLUGIN_VERSION)]
+    [BepInPlugin(PluginGUID, PluginName, PluginVersion)]
     public class BaseHunieModPlugin : BaseUnityPlugin
     {
         /// <summary>
         /// The identifier of this plugin.
         /// </summary>
-        public const string PLUGIN_GUID = "com.lounger.huniemod";
+        public const string PluginGUID = "com.lounger.huniemod";
 
         /// <summary>
         /// The name of this plugin.
         /// </summary>
-        public const string PLUGIN_NAME = "HunieMod";
+        public const string PluginName = "HunieMod";
 
         /// <summary>
         /// The version of this plugin.
         /// </summary>
-        public const string PLUGIN_VERSION = "0.2.0.0";
+        public const string PluginVersion = "0.2.0.0";
 
         /// <summary>
         /// The directory where this plugin resides.
         /// </summary>
-        public readonly string BASE_DIR = Path.GetDirectoryName(typeof(BaseHunieModPlugin).Assembly.Location);
+        public static readonly string PluginBaseDir = Path.GetDirectoryName(typeof(BaseHunieModPlugin).Assembly.Location);
 
         #region Game core
 
