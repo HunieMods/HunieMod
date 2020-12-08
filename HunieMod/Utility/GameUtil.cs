@@ -97,7 +97,6 @@ namespace HunieMod
         private static void OnSaveFileSelected(int saveFileIndex)
         {
             GM.Stage.uiTitle.SaveFileSelectedEvent -= OnSaveFileSelected;
-            GM.Stage.uiTop.buttonHuniebee.interactive = true;
             LoadSaveFile(saveFileIndex);
         }
 
@@ -216,6 +215,9 @@ namespace HunieMod
                         AccessTools.Field(typeof(UITitle), "SaveFileSelectedEvent").SetValue(GM.Stage.uiTitle, null, BindingFlags.Public, null, null);
 
                         GM.Stage.uiTitle.HideTitleScreen();
+                        GM.Stage.SetPausable(true);
+
+                        GM.Stage.uiTop.buttonHuniebee.interactive = true;
                     }
 
                     if (!saveFile.started)
