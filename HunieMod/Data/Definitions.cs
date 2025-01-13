@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using HarmonyLib;
 
 namespace HunieMod
@@ -12,8 +13,12 @@ namespace HunieMod
     {
         private static List<T> GetDefinitions<T>(object instance) where T : Definition
         {
-            if (instance == null) throw new ArgumentNullException(nameof(instance));
-            var field = AccessTools.Field(instance.GetType(), "_definitions") ?? throw new InvalidOperationException($"Field _definitions was not found on type {instance.GetType()}");
+            if (instance == null)
+            {
+                throw new ArgumentNullException(nameof(instance));
+            }
+
+            FieldInfo field = AccessTools.Field(instance.GetType(), "_definitions") ?? throw new InvalidOperationException($"Field _definitions was not found on type {instance.GetType()}");
             return (field.GetValue(instance) as Dictionary<int, T>).Values.ToList();
         }
 

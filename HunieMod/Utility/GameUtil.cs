@@ -26,7 +26,9 @@ namespace HunieMod
         public static bool EndGameSession(bool saveGame = true, bool revertDates = true, bool triggerValediction = true)
         {
             if (GM.System == null || GM.System.GameState == GameState.TITLE || GM.System.GameState == GameState.LOADING || !GM.System.Location.IsLocationSettled())
+            {
                 return false;
+            }
 
             if (!GM.System.Player.tutorialComplete || GetAvailableGirls(availableOnly: false, excludeCurrentGirl: false).Count == 0)
             {
@@ -37,7 +39,9 @@ namespace HunieMod
             GM.Stage.uiTop.buttonHuniebee.interactive = false;
             GM.Stage.SetPausable(false);
             if (GM.Stage.cellPhone.IsOpen())
+            {
                 ShowCellPhone(false, true);
+            }
 
             if (GM.System.GameState == GameState.PUZZLE)
             {
@@ -49,9 +53,11 @@ namespace HunieMod
                 if (saveGame)
                 {
                     GM.System.Player.GetGirlData(GM.System.Location.currentGirl).dayDated = !revertDates;
-                    var returnTo = (LocationDefinition)AccessTools.Field(typeof(PuzzleManager), "_returnToLocation")?.GetValue(GM.System.Puzzle);
+                    LocationDefinition returnTo = (LocationDefinition)AccessTools.Field(typeof(PuzzleManager), "_returnToLocation")?.GetValue(GM.System.Puzzle);
                     if (returnTo != null)
+                    {
                         GM.System.Player.currentLocation = returnTo;
+                    }
                 }
                 HidePuzzleGame(true);
             }
@@ -68,10 +74,14 @@ namespace HunieMod
             GM.Stage.uiWindows.HideActiveWindow();
 
             if (triggerValediction)
+            {
                 StaticCoroutine.Do(TriggerValedictionDialog());
+            }
 
             if (saveGame)
+            {
                 GM.System.SaveGame();
+            }
 
             GM.System.Location.currentGirl = null;
             GM.System.Location.currentLocation = null;
@@ -87,7 +97,7 @@ namespace HunieMod
 
         private static IEnumerator TriggerValedictionDialog()
         {
-            var line = GM.System.Girl.GetDialogTriggerLine(GM.Stage.uiGirl.valedictionDialogTrigger, (int)GM.System.Clock.DayTime(-1));
+            DialogLine line = GM.System.Girl.GetDialogTriggerLine(GM.Stage.uiGirl.valedictionDialogTrigger, (int)GM.System.Clock.DayTime(-1));
             GM.Stage.girl.ReadDialogLine(line, passive: false, hideSpeechBubble: true);
             yield return new WaitForSeconds(line.GetAudio().clip.length - 0.5f);
             GM.Stage.girl.ClearDialog();
@@ -109,7 +119,7 @@ namespace HunieMod
         /// </remarks>
         public static void ClearActiveDialogScene()
         {
-            var list = (List<DialogSceneStepsProgress>)AccessTools.Field(typeof(DialogManager), "_activeDialogSceneSteps").GetValue(GM.System.Dialog);
+            List<DialogSceneStepsProgress> list = (List<DialogSceneStepsProgress>)AccessTools.Field(typeof(DialogManager), "_activeDialogSceneSteps").GetValue(GM.System.Dialog);
             list.Clear();
             AccessTools.Field(typeof(DialogManager), "_activeDialogScene").SetValue(GM.System.Dialog, null);
             GM.Stage.girl.ClearDialog();
@@ -125,19 +135,21 @@ namespace HunieMod
         /// <returns>A list of <see cref="GirlDefinition"/> matching the specified filters. An empty list is returned when there are no matches.</returns>
         public static List<GirlDefinition> GetAvailableGirls(bool metOnly = true, bool availableOnly = true, bool excludeCurrentGirl = true)
         {
-            var allGirls = GM.Data.Girls.GetAll();
-            var girls = new List<GirlDefinition>();
-            var clock = GM.System.Clock;
+            List<GirlDefinition> allGirls = GM.Data.Girls.GetAll();
+            List<GirlDefinition> girls = new List<GirlDefinition>();
+            ClockManager clock = GM.System.Clock;
             allGirls.ForEach(girl =>
             {
                 if (!excludeCurrentGirl || GM.System.Location.currentGirl != girl)
                 {
-                    var girlData = GM.System.Player.GetGirlData(girl);
-                    var girlLocation = girl.IsAtLocationAtTime(clock.Weekday(clock.TotalMinutesElapsed(ClockManager.MINUTES_PER_DAYTIME), true),
+                    GirlPlayerData girlData = GM.System.Player.GetGirlData(girl);
+                    LocationDefinition girlLocation = girl.IsAtLocationAtTime(clock.Weekday(clock.TotalMinutesElapsed(ClockManager.MINUTES_PER_DAYTIME), true),
                                                                clock.DayTime(clock.TotalMinutesElapsed(ClockManager.MINUTES_PER_DAYTIME)));
 
                     if ((!metOnly || girlData.metStatus == GirlMetStatus.MET) && (!availableOnly || girlLocation != null))
+                    {
                         girls.Add(girl);
+                    }
                 }
             });
             return girls;
@@ -152,7 +164,7 @@ namespace HunieMod
         /// <returns>A random <see cref="GirlDefinition"/> matching the specified filters, or <c>null</c> when no match was found.</returns>
         public static GirlDefinition GetRandomAvailableGirl(bool metOnly = true, bool availableOnly = true, bool excludeCurrentGirl = true)
         {
-            var girls = GetAvailableGirls(metOnly, availableOnly, excludeCurrentGirl);
+            List<GirlDefinition> girls = GetAvailableGirls(metOnly, availableOnly, excludeCurrentGirl);
             return girls.Count > 0 ? girls[UnityEngine.Random.Range(0, girls.Count)] : null;
         }
 
@@ -162,9 +174,9 @@ namespace HunieMod
         /// <returns>A random position on the screen.</returns>
         public static Vector2 GetRandomScreenPosition()
         {
-            var cam = GM.System.gameCamera.mainCamera;
-            var x = UnityEngine.Random.Range(cam.ScreenToWorldPoint(Vector3.zero).x, cam.ScreenToWorldPoint(new Vector2(GameCamera.SCREEN_DEFAULT_WIDTH, 0)).x);
-            var y = UnityEngine.Random.Range(cam.ScreenToWorldPoint(Vector3.zero).y, cam.ScreenToWorldPoint(new Vector2(0, GameCamera.SCREEN_DEFAULT_HEIGHT)).y);
+            Camera cam = GM.System.gameCamera.mainCamera;
+            float x = UnityEngine.Random.Range(cam.ScreenToWorldPoint(Vector3.zero).x, cam.ScreenToWorldPoint(new Vector2(GameCamera.SCREEN_DEFAULT_WIDTH, 0)).x);
+            float y = UnityEngine.Random.Range(cam.ScreenToWorldPoint(Vector3.zero).y, cam.ScreenToWorldPoint(new Vector2(0, GameCamera.SCREEN_DEFAULT_HEIGHT)).y);
             return new Vector2(x, y);
         }
 
@@ -191,7 +203,9 @@ namespace HunieMod
             GM.Stage.uiPuzzle.puzzleGrid.gameObj.SetActive(false);
 
             if (hidePuzzleStatus)
+            {
                 GM.Stage.uiPuzzle.puzzleStatus.localY = UIGirl.GIRL_STATS_HIDDEN_Y_POS;
+            }
         }
 
         /// <summary>
@@ -202,7 +216,9 @@ namespace HunieMod
         public static void LoadSaveFile(int index, SettingsGender gender = SettingsGender.MALE)
         {
             if (index < 0 || index >= SaveUtils.SAVE_FILE_COUNT)
+            {
                 throw new ArgumentOutOfRangeException(nameof(index), $"Min: 0  Max: {SaveUtils.SAVE_FILE_COUNT - 1}");
+            }
 
             if (GM.System != null)
             {
@@ -221,7 +237,9 @@ namespace HunieMod
                     }
 
                     if (!saveFile.started)
+                    {
                         saveFile.settingsGender = (int)gender;
+                    }
 
                     // Set the active save file
                     AccessTools.Field(typeof(GM), "_saveFile").SetValue(GM.System, saveFile);
@@ -239,9 +257,13 @@ namespace HunieMod
         public static void QuitGame(bool killProcess = true)
         {
             if (killProcess)
+            {
                 Process.GetCurrentProcess()?.Kill();
+            }
             else
+            {
                 Application.Quit();
+            }
         }
 
         /// <summary>
@@ -256,11 +278,13 @@ namespace HunieMod
         public static bool ResetSaveFile(int index, bool force = false)
         {
             if (index < 0 || index >= SaveUtils.SAVE_FILE_COUNT)
+            {
                 throw new ArgumentOutOfRangeException(nameof(index), $"Minimum: 0  Maximum: {SaveUtils.SAVE_FILE_COUNT - 1}");
+            }
 
             if (GM.System != null)
             {
-                var saveFile = SaveUtils.GetSaveFile(index);
+                SaveFile saveFile = SaveUtils.GetSaveFile(index);
                 if (saveFile != null && (force || saveFile != GM.System.SaveFile))
                 {
                     saveFile.ResetFile();
@@ -319,9 +343,11 @@ namespace HunieMod
         public static void ShowNotification(CellNotificationType type, string text)
         {
             if (text.IsNullOrWhiteSpace())
+            {
                 return;
+            }
 
-            var notification = new CellNotification(type, text);
+            CellNotification notification = new CellNotification(type, text);
             AccessTools.Method(typeof(UICellNotifications), "ShowNotification")?.Invoke(GM.Stage.cellNotifications, new object[] { notification });
         }
     }

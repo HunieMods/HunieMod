@@ -53,11 +53,13 @@ namespace HunieMod
             if (sprite != null && pieceArt != null && container != null && !pieceArt.spriteName.IsNullOrWhiteSpace())
             {
                 if (removeChildren && container.GetChildren().Length > 0)
+                {
                     container.RemoveAllChildren(true);
+                }
 
                 container.AddChild(sprite);
                 sprite.sprite.FlipX = girl.flip;
-                var offsetX = girl.flip ? GameCamera.SCREEN_DEFAULT_WIDTH : 0;
+                int offsetX = girl.flip ? GameCamera.SCREEN_DEFAULT_WIDTH : 0;
                 sprite.SetLocalPosition(Mathf.Abs(offsetX - pieceArt.x), -pieceArt.y);
             }
         }
@@ -76,11 +78,15 @@ namespace HunieMod
         public static void ForceExpression(this Girl girl, GirlExpressionType expressionType, bool changeEyes = true, bool changeMouth = true)
         {
             if (girl.definition == null)
+            {
                 throw new InvalidOperationException($"{nameof(girl)}.{nameof(girl.definition)} is null");
+            }
 
             int index = girl.definition.pieces.FindIndex(p => p.type == GirlPieceType.EXPRESSION && p.expressionType == expressionType);
             if (index == -1)
+            {
                 index = girl.definition.defaultExpression;
+            }
 
             girl.ForceExpression(index, changeEyes, changeMouth);
         }
@@ -100,7 +106,9 @@ namespace HunieMod
         public static void ForceExpression(this Girl girl, int pieceIndex, bool changeEyes = true, bool changeMouth = true)
         {
             if (pieceIndex < 0 || pieceIndex >= girl.definition.pieces.Count)
+            {
                 throw new IndexOutOfRangeException(nameof(pieceIndex));
+            }
 
             GirlPiece piece = girl.definition.pieces[pieceIndex];
 
@@ -111,14 +119,30 @@ namespace HunieMod
 
             if (piece != null)
             {
-                if (changeEyes) girl.eyes.RemoveAllChildren();
+                if (changeEyes)
+                {
+                    girl.eyes.RemoveAllChildren();
+                }
+
                 girl.eyebrows.RemoveAllChildren();
-                if (changeMouth) girl.mouth.RemoveAllChildren();
+                if (changeMouth)
+                {
+                    girl.mouth.RemoveAllChildren();
+                }
+
                 girl.face.RemoveAllChildren();
 
-                if (changeEyes) girl.AddGirlPieceArtToContainer(piece.primaryArt, girl.eyes);
+                if (changeEyes)
+                {
+                    girl.AddGirlPieceArtToContainer(piece.primaryArt, girl.eyes);
+                }
+
                 girl.AddGirlPieceArtToContainer(piece.secondaryArt, girl.eyebrows);
-                if (changeMouth) girl.AddGirlPieceArtToContainer(piece.tertiaryArt, girl.mouth);
+                if (changeMouth)
+                {
+                    girl.AddGirlPieceArtToContainer(piece.tertiaryArt, girl.mouth);
+                }
+
                 girl.AddGirlPieceArtToContainer(piece.quaternaryArt, girl.face);
 
                 girl.ChangeExpression(piece.expressionType, true, changeEyes, changeMouth, 0.5f);
