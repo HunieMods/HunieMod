@@ -19,7 +19,7 @@ namespace HunieMod
             }
 
             FieldInfo field = AccessTools.Field(instance.GetType(), "_definitions") ?? throw new InvalidOperationException($"Field _definitions was not found on type {instance.GetType()}");
-            return (field.GetValue(instance) as Dictionary<int, T>).Values.ToList();
+            return [.. (field.GetValue(instance) as Dictionary<int, T>).Values];
         }
 
         #region Public methods
@@ -31,58 +31,25 @@ namespace HunieMod
         /// <returns>A random definition of the specified type.</returns>
         public static T GetRandom<T>() where T : Definition
         {
-            List<T> definitions;
-            switch (typeof(T).Name)
+            List<T> definitions = typeof(T).Name switch
             {
-                case nameof(AbilityDefinition):
-                    definitions = Abilities as List<T>;
-                    break;
-                case nameof(ActionMenuItemDefinition):
-                    definitions = ActionMenuItems as List<T>;
-                    break;
-                case nameof(CellAppDefinition):
-                    definitions = CellApps as List<T>;
-                    break;
-                case nameof(DebugProfile):
-                    definitions = DebugProfiles as List<T>;
-                    break;
-                case nameof(DialogSceneDefinition):
-                    definitions = DialogScenes as List<T>;
-                    break;
-                case nameof(DialogTriggerDefinition):
-                    definitions = DialogTriggers as List<T>;
-                    break;
-                case nameof(EnergyTrailDefinition):
-                    definitions = EnergyTrails as List<T>;
-                    break;
-                case nameof(GirlDefinition):
-                    definitions = Girls as List<T>;
-                    break;
-                case nameof(ItemDefinition):
-                    definitions = Items as List<T>;
-                    break;
-                case nameof(LocationDefinition):
-                    definitions = Locations as List<T>;
-                    break;
-                case nameof(MessageDefinition):
-                    definitions = Messages as List<T>;
-                    break;
-                case nameof(ParticleEmitter2DDefinition):
-                    definitions = Particles as List<T>;
-                    break;
-                case nameof(PuzzleTokenDefinition):
-                    definitions = PuzzleTokens as List<T>;
-                    break;
-                case nameof(SpriteGroupDefinition):
-                    definitions = SpriteGroups as List<T>;
-                    break;
-                case nameof(TraitDefinition):
-                    definitions = Traits as List<T>;
-                    break;
-                default:
-                    definitions = new List<T>();
-                    break;
-            }
+                nameof(AbilityDefinition) => Abilities as List<T>,
+                nameof(ActionMenuItemDefinition) => ActionMenuItems as List<T>,
+                nameof(CellAppDefinition) => CellApps as List<T>,
+                nameof(DebugProfile) => DebugProfiles as List<T>,
+                nameof(DialogSceneDefinition) => DialogScenes as List<T>,
+                nameof(DialogTriggerDefinition) => DialogTriggers as List<T>,
+                nameof(EnergyTrailDefinition) => EnergyTrails as List<T>,
+                nameof(GirlDefinition) => Girls as List<T>,
+                nameof(ItemDefinition) => Items as List<T>,
+                nameof(LocationDefinition) => Locations as List<T>,
+                nameof(MessageDefinition) => Messages as List<T>,
+                nameof(ParticleEmitter2DDefinition) => Particles as List<T>,
+                nameof(PuzzleTokenDefinition) => PuzzleTokens as List<T>,
+                nameof(SpriteGroupDefinition) => SpriteGroups as List<T>,
+                nameof(TraitDefinition) => Traits as List<T>,
+                _ => [],
+            };
             return definitions[UnityEngine.Random.Range(0, definitions.Count)];
         }
 
@@ -174,7 +141,7 @@ namespace HunieMod
         /// <summary>
         /// Instances of all the Puzzle Token definitions in the game.
         /// </summary>
-        public static List<PuzzleTokenDefinition> PuzzleTokens => GameManager.Data.PuzzleTokens.GetAll().ToList();
+        public static List<PuzzleTokenDefinition> PuzzleTokens => [.. GameManager.Data.PuzzleTokens.GetAll()];
 
         /// <summary>
         /// Instances of all the Sprite Group definitions in the game.

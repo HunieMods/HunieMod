@@ -21,7 +21,7 @@ namespace HunieMod
         /// </remarks>
         public static void AddGirlPiece(this Girl girl, GirlPiece girlPiece)
         {
-            AccessTools.Method(typeof(Girl), nameof(AddGirlPiece)).Invoke(girl, new object[] { girlPiece });
+            AccessTools.Method(typeof(Girl), nameof(AddGirlPiece)).Invoke(girl, [girlPiece]);
         }
 
         /// <summary>
@@ -33,7 +33,7 @@ namespace HunieMod
         /// <remarks>Note that this expects that the <see cref="GirlPieceArt.spriteName"/> value exist in <see cref="Girl.spriteCollection"/>.</remarks>
         public static void AddGirlPieceArtToContainer(this Girl girl, GirlPieceArt girlPieceArt, DisplayObject container)
         {
-            AccessTools.Method(typeof(Girl), nameof(AddGirlPieceArtToContainer)).Invoke(girl, new object[] { girlPieceArt, container });
+            AccessTools.Method(typeof(Girl), nameof(AddGirlPieceArtToContainer)).Invoke(girl, [girlPieceArt, container]);
         }
 
         /// <summary>
@@ -157,7 +157,7 @@ namespace HunieMod
         /// <returns>A <see cref="DisplayObject"/> to be used for the specified <see cref="GirlLayer"/>.</returns>
         public static DisplayObject GetContainerByLayer(this Girl girl, GirlLayer layer)
         {
-            return (DisplayObject)AccessTools.Method(typeof(Girl), nameof(GetContainerByLayer)).Invoke(girl, new object[] { layer });
+            return (DisplayObject)AccessTools.Method(typeof(Girl), nameof(GetContainerByLayer)).Invoke(girl, [layer]);
         }
 
         /// <summary>
@@ -168,7 +168,7 @@ namespace HunieMod
         /// <returns>The girl piece meant for the specified expression.</returns>
         public static GirlPiece GetGirlPieceByExpressionType(this Girl girl, GirlExpressionType expression)
         {
-            return (GirlPiece)AccessTools.Method(typeof(Girl), nameof(GetGirlPieceByExpressionType)).Invoke(girl, new object[] { expression });
+            return (GirlPiece)AccessTools.Method(typeof(Girl), nameof(GetGirlPieceByExpressionType)).Invoke(girl, [expression]);
         }
 
         /// <summary>
@@ -178,7 +178,7 @@ namespace HunieMod
         /// <param name="letter">The letter to set the mouth shape to.</param>
         public static void MouthLetter(this Girl girl, string letter)
         {
-            AccessTools.Method(typeof(Girl), nameof(MouthLetter)).Invoke(girl, new object[] { letter });
+            AccessTools.Method(typeof(Girl), nameof(MouthLetter)).Invoke(girl, [letter]);
         }
 
         /// <summary>

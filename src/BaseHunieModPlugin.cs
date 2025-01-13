@@ -107,7 +107,7 @@ namespace HunieMod
         /// <summary>
         /// Event helper that wraps certain key game events.
         /// </summary>
-        protected static EventManager Events => events = events ?? new EventManager();
+        protected static EventManager Events => events ??= new EventManager();
 
         /// <summary>
         /// Event helper that wraps certain key game events.

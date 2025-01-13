@@ -24,7 +24,7 @@ namespace HunieMod
         {
             if (instance == null)
             {
-                GameObject obj = new GameObject("Static Coroutine Object")
+                GameObject obj = new("Static Coroutine Object")
                 {
                     hideFlags = HideFlags.HideInHierarchy
                 };

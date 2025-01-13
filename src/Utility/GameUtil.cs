@@ -136,7 +136,7 @@ namespace HunieMod
         public static List<GirlDefinition> GetAvailableGirls(bool metOnly = true, bool availableOnly = true, bool excludeCurrentGirl = true)
         {
             List<GirlDefinition> allGirls = GM.Data.Girls.GetAll();
-            List<GirlDefinition> girls = new List<GirlDefinition>();
+            List<GirlDefinition> girls = [];
             ClockManager clock = GM.System.Clock;
             allGirls.ForEach(girl =>
             {
@@ -347,8 +347,8 @@ namespace HunieMod
                 return;
             }
 
-            CellNotification notification = new CellNotification(type, text);
-            AccessTools.Method(typeof(UICellNotifications), "ShowNotification")?.Invoke(GM.Stage.cellNotifications, new object[] { notification });
+            CellNotification notification = new(type, text);
+            AccessTools.Method(typeof(UICellNotifications), "ShowNotification")?.Invoke(GM.Stage.cellNotifications, [notification]);
         }
     }
 }
