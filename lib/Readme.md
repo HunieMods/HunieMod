@@ -6,5 +6,4 @@ The following files are **stripped** HuniePop v1.2.0 assemblies that only contai
 Assembly-CSharp.dll
 Assembly-CSharp-firstpass.dll
 HOTween.dll
-UnityEngine.dll
 ```
