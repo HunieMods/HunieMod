@@ -75,77 +75,77 @@
         /// <summary>
         /// Instances of all the Ability definitions in the game.
         /// </summary>
-        public static List<AbilityDefinition> Abilities => GetDefinitions<AbilityDefinition>(GameManager.Data.Abilities);
+        public static List<AbilityDefinition> Abilities => GetDefinitions<AbilityDefinition>(GM.Data.Abilities);
 
         /// <summary>
         /// Instances of all the Action Menu Item definitions in the game.
         /// </summary>
-        public static List<ActionMenuItemDefinition> ActionMenuItems => GetDefinitions<ActionMenuItemDefinition>(GameManager.Data.ActionMenuItems);
+        public static List<ActionMenuItemDefinition> ActionMenuItems => GetDefinitions<ActionMenuItemDefinition>(GM.Data.ActionMenuItems);
 
         /// <summary>
         /// Instances of all the Cellphone App definitions in the game.
         /// </summary>
-        public static List<CellAppDefinition> CellApps => GetDefinitions<CellAppDefinition>(GameManager.Data.CellApps);
+        public static List<CellAppDefinition> CellApps => GetDefinitions<CellAppDefinition>(GM.Data.CellApps);
 
         /// <summary>
         /// Instances of all the Debug Profile definitions in the game.
         /// </summary>
-        public static List<DebugProfile> DebugProfiles => GetDefinitions<DebugProfile>(GameManager.Data.DebugProfiles);
+        public static List<DebugProfile> DebugProfiles => GetDefinitions<DebugProfile>(GM.Data.DebugProfiles);
 
         /// <summary>
         /// Instances of all the Dialog Scene definitions in the game.
         /// </summary>
-        public static List<DialogSceneDefinition> DialogScenes => GetDefinitions<DialogSceneDefinition>(GameManager.Data.DialogScenes);
+        public static List<DialogSceneDefinition> DialogScenes => GetDefinitions<DialogSceneDefinition>(GM.Data.DialogScenes);
 
         /// <summary>
         /// Instances of all the Dialog Trigger definitions in the game.
         /// </summary>
-        public static List<DialogTriggerDefinition> DialogTriggers => GetDefinitions<DialogTriggerDefinition>(GameManager.Data.DialogTriggers);
+        public static List<DialogTriggerDefinition> DialogTriggers => GetDefinitions<DialogTriggerDefinition>(GM.Data.DialogTriggers);
 
         /// <summary>
         /// Instances of all the Energy Trail definitions in the game.
         /// </summary>
-        public static List<EnergyTrailDefinition> EnergyTrails => GetDefinitions<EnergyTrailDefinition>(GameManager.Data.EnergyTrails);
+        public static List<EnergyTrailDefinition> EnergyTrails => GetDefinitions<EnergyTrailDefinition>(GM.Data.EnergyTrails);
 
         /// <summary>
         /// Instances of all the Girl definitions in the game.
         /// </summary>
-        public static List<GirlDefinition> Girls => GameManager.Data.Girls.GetAll();
+        public static List<GirlDefinition> Girls => GM.Data.Girls.GetAll();
 
         /// <summary>
         /// Instances of all the Item definitions in the game.
         /// </summary>
-        public static List<ItemDefinition> Items => GetDefinitions<ItemDefinition>(GameManager.Data.Items);
+        public static List<ItemDefinition> Items => GetDefinitions<ItemDefinition>(GM.Data.Items);
 
         /// <summary>
         /// Instances of all the Location definitions in the game.
         /// </summary>
-        public static List<LocationDefinition> Locations => GetDefinitions<LocationDefinition>(GameManager.Data.Locations);
+        public static List<LocationDefinition> Locations => GetDefinitions<LocationDefinition>(GM.Data.Locations);
 
         /// <summary>
         /// Instances of all the Message definitions in the game.
         /// </summary>
-        public static List<MessageDefinition> Messages => GetDefinitions<MessageDefinition>(GameManager.Data.Messages);
+        public static List<MessageDefinition> Messages => GetDefinitions<MessageDefinition>(GM.Data.Messages);
 
         /// <summary>
         /// Instances of all the 2D Particle Emitter definitions in the game.
         /// </summary>
-        public static List<ParticleEmitter2DDefinition> Particles => GetDefinitions<ParticleEmitter2DDefinition>(GameManager.Data.Particles);
+        public static List<ParticleEmitter2DDefinition> Particles => GetDefinitions<ParticleEmitter2DDefinition>(GM.Data.Particles);
 
         /// <summary>
         /// Instances of all the Puzzle Token definitions in the game.
         /// </summary>
-        public static List<PuzzleTokenDefinition> PuzzleTokens => [.. GameManager.Data.PuzzleTokens.GetAll()];
+        public static List<PuzzleTokenDefinition> PuzzleTokens => [.. GM.Data.PuzzleTokens.GetAll()];
 
         /// <summary>
         /// Instances of all the Sprite Group definitions in the game.
         /// </summary>
-        public static List<SpriteGroupDefinition> SpriteGroups => GetDefinitions<SpriteGroupDefinition>(GameManager.Data.SpriteGroups);
+        public static List<SpriteGroupDefinition> SpriteGroups => GetDefinitions<SpriteGroupDefinition>(GM.Data.SpriteGroups);
 
         /// <summary>
         /// Instances of all the Trait definitions in the game.
         /// </summary>
-        public static List<TraitDefinition> Traits => GetDefinitions<TraitDefinition>(GameManager.Data.Traits);
+        public static List<TraitDefinition> Traits => GetDefinitions<TraitDefinition>(GM.Data.Traits);
 
         #endregion
     }

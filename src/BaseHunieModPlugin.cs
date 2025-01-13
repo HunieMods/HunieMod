@@ -16,17 +16,17 @@
         /// <summary>
         /// General game manager containing all other managers and general game settings.
         /// </summary>
-        public static GameManager Game => GameManager.System;
+        public static GM Game => GM.System;
 
         /// <summary>
         /// The game's main camera.
         /// </summary>
-        public static Camera MainCam => GameManager.System.gameCamera.mainCamera;
+        public static Camera MainCam => GM.System.gameCamera.mainCamera;
 
         /// <summary>
         /// The root container on which all visible elements are placed.
         /// </summary>
-        public static Stage GameStage => GameManager.Stage;
+        public static Stage GameStage => GM.Stage;
 
         /// <summary>
         /// Manages location traveling, arrivals and departures.
@@ -109,18 +109,18 @@
         protected class EventManager
         {
             /// <summary>
-            /// Fires after <see cref="GameManager.Pause"/> has frozen all game elements but the cellphone.
+            /// Fires after <see cref="GM.Pause"/> has frozen all game elements but the cellphone.
             /// </summary>
-            public event GameManager.GameManagerDelegate GamePause
+            public event GM.GameManagerDelegate GamePause
             {
                 add { Game.GamePauseEvent += value; }
                 remove { Game.GamePauseEvent -= value; }
             }
 
             /// <summary>
-            /// Fires after <see cref="GameManager.Unpause"/> has unfrozen all game elements.
+            /// Fires after <see cref="GM.Unpause"/> has unfrozen all game elements.
             /// </summary>
-            public event GameManager.GameManagerDelegate GameUnpause
+            public event GM.GameManagerDelegate GameUnpause
             {
                 add { Game.GameUnpauseEvent += value; }
                 remove { Game.GameUnpauseEvent -= value; }
