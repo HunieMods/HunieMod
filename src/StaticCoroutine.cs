@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
-
-namespace HunieMod
+﻿namespace HunieMod
 {
     /// <summary>
     /// A class that allows starting a <see cref="Coroutine"/> without the need to for being inside a <see cref="MonoBehaviour"/>.

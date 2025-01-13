@@ -1,9 +1,4 @@
-﻿using System;
-using BepInEx;
-using HarmonyLib;
-using UnityEngine;
-
-namespace HunieMod
+﻿namespace HunieMod
 {
     /// <summary>
     /// A collection of helpers and method wrappers for the <see cref="Girl"/> class.

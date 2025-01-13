@@ -1,10 +1,4 @@
-﻿using System;
-using System.IO;
-using System.Linq;
-using BepInEx;
-using UnityEngine;
-
-namespace HunieMod
+﻿namespace HunieMod
 {
     /// <summary>
     /// The base plugin type that adds HuniePop-specific functionality over the default <see cref="BaseUnityPlugin"/>.

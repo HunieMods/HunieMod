@@ -1,0 +1,11 @@
+﻿global using BepInEx;
+global using GM = GameManager;
+global using HarmonyLib;
+global using System;
+global using System.Collections.Generic;
+global using System.Collections;
+global using System.Diagnostics;
+global using System.IO;
+global using System.Linq;
+global using System.Reflection;
+global using UnityEngine;
