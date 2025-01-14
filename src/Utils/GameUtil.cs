@@ -1,4 +1,4 @@
-﻿namespace HunieMod;
+﻿namespace HunieMod.Utils;
 
 /// <summary>
 /// A class with general game-related utilities.

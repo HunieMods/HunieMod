@@ -1,4 +1,4 @@
-﻿namespace HunieMod;
+﻿namespace HunieMod.Extensions;
 
 /// <summary>
 /// A collection of helpers and method wrappers for the <see cref="Girl"/> class.

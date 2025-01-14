@@ -1,4 +1,4 @@
-﻿namespace HunieMod;
+﻿namespace HunieMod.Data;
 
 /// <summary>
 /// Helper class that provides access to all the <see cref="Definition"/> objects in the game.

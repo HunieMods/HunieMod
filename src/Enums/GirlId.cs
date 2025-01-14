@@ -1,4 +1,4 @@
-﻿namespace HunieMod;
+﻿namespace HunieMod.Enums;
 
 /// <summary>
 /// Girl IDs that can be compared to the <see cref="Definition.id"/> field on <see cref="GirlDefinition"/>.

@@ -1,6 +1,7 @@
 ﻿global using BepInEx;
 global using GM = GameManager;
 global using HarmonyLib;
+global using HunieMod.Enums;
 global using System;
 global using System.Collections.Generic;
 global using System.Collections;
