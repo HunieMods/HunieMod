@@ -9,7 +9,7 @@
     <RootNamespace>HunieMod</RootNamespace>
     <Description>HuniePop plugin providing several abstractions and helpers as a base for other plugins</Description>
     <Authors>Lounger</Authors>
-    <Copyright>Copyright (c) 2020-2025 Lounger</Copyright>
+    <Copyright>Copyright © 2020 Lounger</Copyright>
     <LangVersion>latest</LangVersion>
     <ImplicitUsings>disable</ImplicitUsings>
     <Nullable>disable</Nullable>
