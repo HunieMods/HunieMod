@@ -3,9 +3,14 @@
 /// <summary>
 /// The base plugin type that adds HuniePop-specific functionality over the default <see cref="BaseUnityPlugin"/>.
 /// </summary>
-[BepInPlugin("com.lounger.huniemod", MyPluginInfo.PLUGIN_NAME, MyPluginInfo.PLUGIN_VERSION)]
+[BepInPlugin(PluginGUID, MyPluginInfo.PLUGIN_NAME, MyPluginInfo.PLUGIN_VERSION)]
 public class BaseHunieModPlugin : BaseUnityPlugin
 {
+    /// <summary>
+    /// The identifier of this plugin.
+    /// </summary>
+    public const string PluginGUID = "com.lounger.huniemod";
+
     /// <summary>
     /// The directory where this plugin resides.
     /// </summary>
