@@ -2,7 +2,6 @@
 
   <PropertyGroup>
     <TargetFramework>net35</TargetFramework>
-    <!--<Version>0.2.0.0</Version>-->
     <VersionPrefix>0.2.0</VersionPrefix>
     <AssemblyName>HunieMod</AssemblyName>
     <Title>HunieMod</Title>
