@@ -1,12 +1,15 @@
 ﻿global using BepInEx;
+global using BepInEx.Logging;
 global using GM = GameManager;
 global using HarmonyLib;
 global using HunieMod.Enums;
 global using System;
-global using System.Collections.Generic;
 global using System.Collections;
+global using System.Collections.Generic;
 global using System.Diagnostics;
 global using System.IO;
 global using System.Linq;
 global using System.Reflection;
+global using System.Text;
+global using System.Text.RegularExpressions;
 global using UnityEngine;
