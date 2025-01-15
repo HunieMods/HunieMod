@@ -1,9 +1,9 @@
 ﻿namespace HunieMod.Extensions;
 
 /// <summary>
-/// A collection of utilities for <see cref="Enum"/> types.
+/// A collection of miscellaneous extensions.
 /// </summary>
-public static class EnumExtensions
+public static class MiscExtensions
 {
     /// <summary>
     /// Returns the next value in sequence for this enum.
@@ -32,5 +32,35 @@ public static class EnumExtensions
     {
         T[] values = Enum.GetValues(typeof(T)) as T[];
         return values[UnityEngine.Random.Range(0, values.Length)];
+    }
+
+    /// <summary>
+    /// Shuffles an array in place.
+    /// </summary>
+    public static void Shuffle<T>(this T[] array)
+    {
+        for (int i = array.Length - 1; i > 0; i--)
+        {
+            int r = UnityEngine.Random.Range(0, i);
+            T tmp = array[i];
+            array[i] = array[r];
+            array[r] = tmp;
+        }
+    }
+
+    /// <summary>
+    /// Shuffles a list in place.
+    /// </summary>
+    public static void Shuffle<T>(this IList<T> list)
+    {
+        int n = list.Count;
+        while (n > 1)
+        {
+            n--;
+            int k = new System.Random().Next(n + 1);
+            T value = list[k];
+            list[k] = list[n];
+            list[n] = value;
+        }
     }
 }
